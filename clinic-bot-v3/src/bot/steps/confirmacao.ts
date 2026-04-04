@@ -1,6 +1,6 @@
 import { StepHandler } from '../../state/types';
 import { text, buttons, MSG } from '../messages';
-import { callMcp } from '../../mcp/client';
+import { cw } from '../../clinicweb/client';
 import { logError } from '../../logger';
 
 const DIAS = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
@@ -40,7 +40,7 @@ export const confirmacaoStep: StepHandler = async (session, input) => {
   if (subStep === 'aguardando_decisao') {
     if (input === 'confirmar' || /^s/i.test(input) || /confirm/i.test(input)) {
       try {
-        const raw = await callMcp('criar_agendamento', {
+        const result = await cw.criarAgendamento({
           codPaciente: paciente.idPaciente,
           codProfissional: especialidade.idProfissional,
           data: horario.data,
@@ -49,9 +49,7 @@ export const confirmacaoStep: StepHandler = async (session, input) => {
           codProcedimento: horario.codProcedimento,
           codConvenio: convenio.codConvenio,
           codPlano: convenio.codPlano,
-          codStatus: 2,
-        });
-        const result = ((raw as { data?: Record<string, unknown> })?.data ?? raw) as { codAgendamento?: number; id?: number };
+        }) as { codAgendamento?: number; id?: number };
 
         const id = result?.codAgendamento ?? result?.id ?? 0;
         const dataFmt = formatData(horario.data, horario.hora);
@@ -68,7 +66,7 @@ export const confirmacaoStep: StepHandler = async (session, input) => {
             stateUpdate: { step: 'horarios', subStep: 'buscar', horario: undefined },
           };
         }
-        logError('confirmacao', 'criar_agendamento', e);
+        logError('confirmacao', 'criarAgendamento', e);
         return {
           responses: [text(MSG.agendamentoErro)],
           stateUpdate: { step: 'escalado' },

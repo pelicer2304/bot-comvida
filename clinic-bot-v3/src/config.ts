@@ -5,9 +5,11 @@ export const config = {
   postgres: {
     url: process.env.DATABASE_URL ?? 'postgresql://postgres:postgres@localhost:5433/clinic_bot',
   },
-  mcp: {
-    url: process.env.MCP_URL ?? 'http://localhost:3000',
-    apiKey: process.env.MCP_API_KEY ?? '',
+  clinicweb: {
+    url: process.env.CW_API_URL ?? 'https://clinicweb-api.prod.clinicweb.linx.com.br',
+    username: process.env.CW_USERNAME ?? '',
+    password: process.env.CW_PASSWORD ?? '',
+    codEmpresa: Number(process.env.COD_EMPRESA ?? 155),
   },
   zapi: {
     instanceId: process.env.ZAPI_INSTANCE_ID ?? '',

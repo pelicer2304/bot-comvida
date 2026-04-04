@@ -1,24 +1,24 @@
 import { StepHandler } from '../../state/types';
 import { text, buttons, list, MSG } from '../messages';
-import { callMcp } from '../../mcp/client';
+import { cw, HorarioLivre } from '../../clinicweb/client';
 import { logError } from '../../logger';
-
-interface Horario { data: string; hora: string; intervalo: number; idProfissional?: number; codProcedimento?: number; }
 
 const COD_PROCEDIMENTO = 241681;
 const DIAS = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
 
-function formatHorario(h: Horario): string {
+interface HorarioComProf extends HorarioLivre { idProfissional?: number; }
+
+function formatHorario(h: HorarioLivre): string {
   const [ano, mes, dia] = h.data.split('-');
   const dow = new Date(Number(ano), Number(mes) - 1, Number(dia)).getDay();
   return `${DIAS[dow]}, ${dia}/${mes} às ${h.hora}`;
 }
 
-async function buscarHorarios(ids: number[], dias: number): Promise<Horario[]> {
-  const todos: Horario[] = [];
+async function buscarHorarios(ids: number[], dias: number): Promise<HorarioComProf[]> {
+  const todos: HorarioComProf[] = [];
   for (const id of ids) {
     try {
-      const raw = await callMcp('proximos_horarios_livres', { idProfissional: id, diasParaFrente: dias }) as Horario[];
+      const raw = await cw.proximosHorariosLivres(id, dias);
       if (Array.isArray(raw)) todos.push(...raw.map(h => ({ ...h, idProfissional: id })));
     } catch { /* sem agenda */ }
   }
@@ -82,7 +82,7 @@ export const horariosStep: StepHandler = async (session, input) => {
 
   // Seleção de horário
   if (subStep === 'aguardando_selecao') {
-    const horarios = session.tempData?.horarios as Horario[];
+    const horarios = session.tempData?.horarios as HorarioComProf[];
     const match = input.match(/^hor_(\d+)$/);
     const idx = match ? parseInt(match[1]) : -1;
 

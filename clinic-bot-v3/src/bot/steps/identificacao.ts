@@ -1,6 +1,6 @@
-import { StepHandler, StepResult } from '../../state/types';
+import { StepHandler } from '../../state/types';
 import { text, buttons, MSG } from '../messages';
-import { callMcp } from '../../mcp/client';
+import { cw } from '../../clinicweb/client';
 import { logError } from '../../logger';
 
 function extractCpf(input: string): string | null {
@@ -14,12 +14,6 @@ function extractDate(input: string): string | null {
   const noSep = input.match(/\b(\d{2})(\d{2})(\d{4})\b/);
   if (noSep) return `${noSep[3]}-${noSep[2]}-${noSep[1]}`;
   return null;
-}
-
-interface PacienteApi {
-  idPaciente: number;
-  nome: string;
-  dataNascimento: string;
 }
 
 export const identificacaoStep: StepHandler = async (session, input) => {
@@ -43,9 +37,8 @@ export const identificacaoStep: StepHandler = async (session, input) => {
     }
 
     try {
-      const raw = await callMcp('buscar_pacientes', { query: cpf });
-      const arr = Array.isArray(raw) ? raw : (raw as { data?: PacienteApi[] })?.data ?? [];
-      const paciente = arr[0] as PacienteApi | undefined ?? null;
+      const pacientes = await cw.buscarPacientes(cpf);
+      const paciente = Array.isArray(pacientes) ? pacientes[0] : null;
 
       if (paciente?.nome) {
         return {
@@ -60,10 +53,10 @@ export const identificacaoStep: StepHandler = async (session, input) => {
         };
       }
     } catch (e) {
-      logError('identificacao', 'buscar_pacientes', e);
+      logError('identificacao', 'buscarPacientes', e);
     }
 
-    // CPF válido mas paciente não encontrado — oferece cadastro (não conta como tentativa de CPF)
+    // CPF válido mas não encontrado — oferece cadastro (não conta como tentativa)
     return {
       responses: [buttons(MSG.cpfNaoEncontrado, [
         { id: 'cadastrar_sim', label: '✅ Cadastrar' },
@@ -79,7 +72,7 @@ export const identificacaoStep: StepHandler = async (session, input) => {
   // Confirmar paciente encontrado
   if (subStep === 'confirmar_paciente') {
     if (input === 'confirmar_sim' || /^s/i.test(input)) {
-      const p = session.tempData?.paciente as PacienteApi;
+      const p = session.tempData?.paciente as { idPaciente: number; nome: string; dataNascimento: string };
       const cpf = session.tempData?.cpf as string;
       return {
         responses: [buttons(MSG.pacienteConfirmado(p.nome), [
@@ -155,10 +148,7 @@ export const identificacaoStep: StepHandler = async (session, input) => {
     const { cpf, nome, dataNascimento } = session.tempData as { cpf: string; nome: string; dataNascimento: string };
 
     try {
-      const raw = await callMcp('criar_paciente', {
-        nomeCompleto: nome, cpf, dataNascimento, sexo,
-      });
-      const result = ((raw as { data?: PacienteApi })?.data ?? raw) as PacienteApi;
+      const result = await cw.criarPaciente({ nomeCompleto: nome, cpf, dataNascimento, sexo });
 
       return {
         responses: [buttons(MSG.cadastroSucesso, [
@@ -173,7 +163,7 @@ export const identificacaoStep: StepHandler = async (session, input) => {
         },
       };
     } catch (e) {
-      logError('identificacao', 'criar_paciente', e);
+      logError('identificacao', 'criarPaciente', e);
       return {
         responses: [text(MSG.cadastroErro)],
         stateUpdate: { step: 'escalado', tempData: undefined },
