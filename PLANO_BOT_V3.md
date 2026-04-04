@@ -1,15 +1,17 @@
-# Plano de Sprints — Bot V3 (Z-API + Menu-Driven)
+# Plano de Sprints — Bot V3 (Menu-Driven + Z-API)
 
 ## Visão Geral
 
-Bot de agendamento **sem IA humanizada** — mensagens fixas, menus com botões/listas do WhatsApp via Z-API. Sem LLM gerando respostas, sem LangGraph, sem OpenRouter. Máquina de estados pura em TypeScript.
+Bot de agendamento **sem IA humanizada** — mensagens fixas, menus com botões/listas do WhatsApp. Sem LLM gerando respostas, sem LangGraph, sem OpenRouter. Máquina de estados pura em TypeScript.
+
+**Estratégia: Playground primeiro, Z-API por último.** O bot inteiro é desenvolvido e testado via playground local. Z-API é só o transporte final — plugar no fim é criar 2 arquivos.
 
 ### O que muda em relação ao V1/V2
 
 | Aspecto | V1/V2 (atual) | V3 (novo) |
 |---|---|---|
 | Tom | Humanizado, LLM gera cada resposta | Direto, mensagens fixas pré-definidas |
-| Gateway WhatsApp | Evolution API | **Z-API** (z-api.io) |
+| Gateway WhatsApp | Evolution API | **Z-API** (z-api.io) — plugado por último |
 | Motor de decisão | LangGraph + LLM classification | Máquina de estados simples (switch/case) |
 | Custo por mensagem | ~$0.01-0.03 (tokens LLM) | **$0** (sem LLM) |
 | Latência | 3-8s (LLM + MCP) | **<1s** (só MCP) |
@@ -26,9 +28,9 @@ Bot de agendamento **sem IA humanizada** — mensagens fixas, menus com botões/
 
 ---
 
-## Sprint 1 — Fundação (clinic-bot-v3 + Z-API)
+## Sprint 1 — Fundação + Playground
 
-**Objetivo:** Projeto rodando, Z-API integrada, estado persistido, saudação funcionando.
+**Objetivo:** Backend rodando, playground funcional, estado persistido, saudação funcionando. Tudo testável localmente sem Z-API.
 
 ### 1.1 — Scaffold do projeto `clinic-bot-v3/`
 
@@ -36,11 +38,11 @@ Bot de agendamento **sem IA humanizada** — mensagens fixas, menus com botões/
 clinic-bot-v3/
 ├── base/                    # Symlink ou cópia dos JSONs
 ├── src/
-│   ├── server.ts            # Express (porta 3005)
-│   ├── config.ts            # Env vars (Z-API, MCP, Postgres)
+│   ├── server.ts            # Express (porta 3005) — /chat REST + /webhook/zapi
+│   ├── config.ts            # Env vars (MCP, Postgres, Z-API opcional)
 │   ├── logger.ts            # Logs estruturados
 │   ├── state/
-│   │   ├── types.ts         # Interface SessionState
+│   │   ├── types.ts         # Interface SessionState + BotResponse
 │   │   └── store.ts         # CRUD de sessão (Postgres)
 │   ├── bot/
 │   │   ├── engine.ts        # Máquina de estados (processMessage)
@@ -52,10 +54,6 @@ clinic-bot-v3/
 │   │       ├── especialidade.ts
 │   │       ├── horarios.ts
 │   │       └── confirmacao.ts
-│   ├── zapi/
-│   │   ├── client.ts        # Z-API client (send-text, send-button-list, send-option-list)
-│   │   ├── webhook.ts       # Webhook handler (ReceivedCallback)
-│   │   └── types.ts         # Tipos do payload Z-API
 │   ├── mcp/
 │   │   └── client.ts        # callMcp() — reutiliza padrão existente
 │   └── base/
@@ -78,27 +76,15 @@ clinic-bot-v3/
 ```
 Zero dependência de LangChain/LangGraph/OpenRouter.
 
-### 1.2 — Integração Z-API
+### 1.2 — Endpoint REST para playground
 
-**Client (`zapi/client.ts`):**
-```
-POST https://api.z-api.io/instances/{instanceId}/token/{token}/send-text
-POST https://api.z-api.io/instances/{instanceId}/token/{token}/send-button-list
-POST https://api.z-api.io/instances/{instanceId}/token/{token}/send-option-list
-```
-Headers: `Client-Token: {clientToken}`
-
-**Webhook (`zapi/webhook.ts`):**
-- Endpoint: `POST /webhook/zapi`
-- Payload Z-API: `{ phone, text: { message }, isGroup, messageId, ... }`
-- Filtrar: ignorar `isGroup=true`, ignorar mensagens do próprio bot
-
-**Env vars novas:**
-```
-ZAPI_INSTANCE_ID=
-ZAPI_TOKEN=
-ZAPI_CLIENT_TOKEN=
-ZAPI_WEBHOOK_SECRET=
+```typescript
+// clinic-bot-v3 expõe endpoint REST — playground e testes usam isso
+app.post('/chat', async (req, res) => {
+  const { phone, message, buttonId } = req.body;
+  const responses = await processMessage(phone, message ?? buttonId);
+  res.json({ responses });
+});
 ```
 
 ### 1.3 — Estado e persistência
@@ -113,8 +99,8 @@ interface SessionState {
   horario?: { data: string; hora: string; intervalo: number; codProcedimento: number };
   agendamentoId?: number;
   tentativas: Record<string, number>;
-  subStep?: string;           // sub-estado dentro de um step (ex: 'aguardando_cpf', 'aguardando_plano')
-  tempData?: Record<string, unknown>; // dados temporários entre sub-steps
+  subStep?: string;
+  tempData?: Record<string, unknown>;
   lastActivityAt: string;
   createdAt: string;
 }
@@ -133,25 +119,57 @@ CREATE TABLE bot_sessions (
 ### 1.4 — Engine (máquina de estados)
 
 ```typescript
-// bot/engine.ts
 async function processMessage(phone: string, text: string): Promise<BotResponse[]> {
-  const session = await loadSession(phone) ?? createSession(phone);
-  session = checkSessionTimeout(session); // <30min, 30min-24h, >24h
+  let session = await loadSession(phone) ?? createSession(phone);
+  session = checkSessionTimeout(session);
 
   const handler = stepHandlers[session.step];
   const result = await handler(session, text);
 
   await saveSession({ ...session, ...result.stateUpdate });
-  return result.responses; // array de mensagens (texto, botões, listas)
+  return result.responses;
 }
 ```
 
+### 1.5 — Playground (`bot-playground/`)
+
+```
+bot-playground/
+├── app/
+│   ├── page.tsx             # Chat com simulação de botões/listas
+│   ├── layout.tsx
+│   ├── globals.css
+│   └── api/
+│       ├── chat/route.ts    # POST → clinic-bot-v3 /chat
+│       └── sessions/route.ts
+├── components/
+│   ├── ChatMessage.tsx      # Renderiza texto, botões, listas
+│   ├── ButtonGroup.tsx      # Simula botões do WhatsApp
+│   └── OptionList.tsx       # Simula option-list do WhatsApp
+├── lib/
+│   └── types.ts             # BotResponse types
+├── package.json             # Next.js 14, React 18, Tailwind
+└── tsconfig.json
+```
+
+**Porta:** 3004
+
+**Tipos de resposta que o playground renderiza:**
+```typescript
+type BotResponse =
+  | { type: 'text'; text: string }
+  | { type: 'buttons'; text: string; buttons: { id: string; label: string }[] }
+  | { type: 'list'; text: string; buttonLabel: string; sections: { title: string; rows: { id: string; title: string; description?: string }[] }[] };
+```
+
 **Validação Sprint 1:**
-- [ ] `npm run dev` sobe na porta 3005
-- [ ] Webhook Z-API recebe mensagem e loga no console
-- [ ] Bot responde "Olá! Sou a assistente da Clínica ComVida" via Z-API
+- [ ] `clinic-bot-v3`: `npm run dev` sobe na porta 3005
+- [ ] `bot-playground`: `npm run dev` sobe na porta 3004
+- [ ] Enviar mensagem no playground → bot responde saudação
 - [ ] Sessão persiste no Postgres
 - [ ] Timeout de sessão funciona (>24h reinicia)
+- [ ] Botões renderizam como chips clicáveis no playground
+- [ ] Listas renderizam como dropdown/modal no playground
 
 ---
 
@@ -199,7 +217,7 @@ CPF inválido (2x):
 ### Sub-steps da identificação
 
 ```
-subStep: null           → pede CPF
+subStep: null                  → pede CPF
 subStep: 'aguardando_cpf'     → valida CPF, busca paciente
 subStep: 'confirmar_paciente' → aguarda botão Sim/Não
 subStep: 'cadastro_nome'      → coleta nome
@@ -213,6 +231,7 @@ subStep: 'cadastro_sexo'      → coleta sexo (botões)
 - [ ] Cadastro completo cria paciente no ClinicWeb
 - [ ] 2 tentativas de CPF inválido → escala para humano
 - [ ] Regex CPF aceita `420.237.798-20` e `42023779820`
+- [ ] Tudo testável no playground
 
 ---
 
@@ -244,7 +263,6 @@ Bot: "Você possui convênio médico?"
   Se ≤10 planos:
     Bot: "Convênio *Bradesco Saúde* identificado. Qual seu plano?"
          [Lista: 1. Plano A | 2. Plano B | 3. Plano C ...]
-    → Z-API send-option-list
 
   Se >10 planos:
     Bot: "Convênio *Bradesco Saúde* identificado. Digite o nome do plano como aparece na carteirinha."
@@ -258,7 +276,7 @@ Bot: "Você possui convênio médico?"
 **Validação Sprint 3:**
 - [ ] "Particular" define codConvenio=-1 e avança
 - [ ] Fuzzy match encontra "bradesco" → "Bradesco Saúde"
-- [ ] Lista de planos aparece como option-list do WhatsApp
+- [ ] Lista de planos aparece como option-list no playground
 - [ ] Convênio inexistente oferece particular via botão
 
 ---
@@ -271,7 +289,7 @@ Bot: "Você possui convênio médico?"
 
 ```
 Bot: "Qual especialidade você precisa?"
-     [Lista de especialidades disponíveis via send-option-list]
+     [Lista de especialidades disponíveis via option-list]
      (extraídas de base/profissionais.json — apenas as que têm profissional)
 
 Paciente: [seleciona "Cardiologia"]
@@ -306,7 +324,7 @@ Se não coberto:
 → se vazio, expande para 15 dias
 
 Bot: "Horários disponíveis para Cardiologia:"
-     [Lista via send-option-list:]
+     [Lista via option-list:]
      1. Segunda, 14/07 às 09:00
      2. Segunda, 14/07 às 10:30
      3. Terça, 15/07 às 14:00
@@ -395,94 +413,83 @@ Erro de API:
 
 ---
 
-## Sprint 7 — Playground (bot-playground)
+## Sprint 7 — Polimento e Testes
 
-**Objetivo:** Frontend de teste que simula botões/listas do WhatsApp, sem depender de número real.
-
-### Scaffold `bot-playground/`
-
-```
-bot-playground/
-├── app/
-│   ├── page.tsx             # Chat com simulação de botões/listas
-│   ├── layout.tsx
-│   ├── globals.css
-│   └── api/
-│       ├── chat/route.ts    # POST → clinic-bot-v3 /chat
-│       └── sessions/route.ts
-├── components/
-│   ├── ChatMessage.tsx      # Renderiza texto, botões, listas
-│   ├── ButtonGroup.tsx      # Simula botões do WhatsApp
-│   └── OptionList.tsx       # Simula option-list do WhatsApp
-├── lib/
-│   └── types.ts             # BotResponse types
-├── package.json             # Next.js 14, React 18, Tailwind
-└── tsconfig.json
-```
-
-**Porta:** 3004
-
-**Endpoint no bot-v3:** `POST /chat` (além do webhook Z-API)
-```typescript
-// clinic-bot-v3 expõe endpoint REST pra playground
-app.post('/chat', async (req, res) => {
-  const { phone, message, buttonId } = req.body;
-  const responses = await processMessage(phone, message ?? buttonId);
-  res.json({ responses });
-});
-```
-
-**Tipos de resposta que o playground renderiza:**
-```typescript
-type BotResponse =
-  | { type: 'text'; text: string }
-  | { type: 'buttons'; text: string; buttons: { id: string; label: string }[] }
-  | { type: 'list'; text: string; buttonLabel: string; sections: { title: string; rows: { id: string; title: string; description?: string }[] }[] };
-```
-
-**Validação Sprint 7:**
-- [ ] `npm run dev` sobe na porta 3004
-- [ ] Mensagens de texto renderizam como balões
-- [ ] Botões renderizam como chips clicáveis
-- [ ] Listas renderizam como dropdown/modal
-- [ ] Clicar botão/item envia o ID como mensagem
-- [ ] Sidebar com lista de sessões
-
----
-
-## Sprint 8 — Polimento e Produção
-
-### 8.1 — Debounce + Mutex
+### 7.1 — Debounce + Mutex
 - Debounce de 2s por phone (WhatsApp manda mensagens rápidas)
 - Mutex por phone (evita processamento concorrente)
 
-### 8.2 — Timeout de sessão
+### 7.2 — Timeout de sessão
 - <30min: continua silenciosamente
 - 30min-24h: "Você estava agendando [especialidade]. Quer continuar?" [Sim] [Recomeçar]
 - >24h: reinicia sessão
 
-### 8.3 — Horário de atendimento
+### 7.3 — Horário de atendimento
 - Verificar config de horário antes de processar
 - Fora do horário: "Nosso atendimento é de segunda a sexta, das 8h às 18h. Retorne nesse horário!"
 
-### 8.4 — Comando /clear
+### 7.4 — Comando /clear
 - Paciente digita `/clear` → reinicia sessão
 
-### 8.5 — Logs e métricas
+### 7.5 — Logs e métricas
 - Log estruturado por phone (JSONL)
 - Métricas: agendamentos criados, abandonos por etapa, tempo médio
 
-### 8.6 — Testes de integração
-- Adaptar `test-flow.js` para o V3 (POST /chat em vez de LLM)
+### 7.6 — Testes de integração
+- Adaptar `test-flow.js` para o V3 (POST /chat)
 - Testar fluxo completo: saudação → CPF → convênio → especialidade → horário → confirmação
 - Testar caminhos alternativos: CPF inválido, convênio inexistente, sem horários
 
-**Validação Sprint 8:**
+**Validação Sprint 7:**
 - [ ] Mensagens rápidas não corrompem estado
 - [ ] Sessão retoma após 1h de inatividade
 - [ ] Fora do horário retorna mensagem fixa
 - [ ] `/clear` reinicia conversa
 - [ ] test-flow.js passa todos os steps
+
+---
+
+## Sprint 8 — Integração Z-API
+
+**Objetivo:** Plugar o bot (já pronto e testado) no WhatsApp via Z-API.
+
+### 8.1 — Client Z-API (`zapi/client.ts`)
+
+```
+POST https://api.z-api.io/instances/{instanceId}/token/{token}/send-text
+POST https://api.z-api.io/instances/{instanceId}/token/{token}/send-button-list
+POST https://api.z-api.io/instances/{instanceId}/token/{token}/send-option-list
+```
+Headers: `Client-Token: {clientToken}`
+
+Mapeia `BotResponse[]` → chamadas Z-API:
+- `{ type: 'text' }` → `send-text`
+- `{ type: 'buttons' }` → `send-button-list`
+- `{ type: 'list' }` → `send-option-list`
+
+### 8.2 — Webhook Z-API (`zapi/webhook.ts`)
+
+- Endpoint: `POST /webhook/zapi`
+- Payload Z-API: `{ phone, text: { message }, isGroup, messageId, ... }`
+- Filtrar: ignorar `isGroup=true`, ignorar mensagens do próprio bot
+- Recebe mensagem → `processMessage(phone, text)` → envia respostas via client
+
+### 8.3 — Env vars
+
+```
+ZAPI_INSTANCE_ID=
+ZAPI_TOKEN=
+ZAPI_CLIENT_TOKEN=
+ZAPI_WEBHOOK_SECRET=
+```
+
+**Validação Sprint 8:**
+- [ ] Webhook recebe mensagem do WhatsApp e loga
+- [ ] Bot responde saudação no WhatsApp real
+- [ ] Botões aparecem como botões nativos do WhatsApp
+- [ ] Listas aparecem como option-list nativa
+- [ ] Fluxo completo funciona no WhatsApp (saudação → agendamento confirmado)
+- [ ] Debounce funciona com mensagens rápidas reais
 
 ---
 
@@ -501,21 +508,21 @@ type BotResponse =
 ## Ordem de Execução
 
 ```
-Sprint 1 (fundação + Z-API)
+Sprint 1 — Fundação + Playground (backend + frontend de teste)
   ↓
-Sprint 2 (identificação)
+Sprint 2 — Identificação do paciente (CPF + cadastro)
   ↓
-Sprint 3 (convênio)
+Sprint 3 — Convênio e plano (fuzzy match + listas)
   ↓
-Sprint 4 (especialidade)
+Sprint 4 — Especialidade + cobertura
   ↓
-Sprint 5 (horários)
+Sprint 5 — Horários disponíveis (API real)
   ↓
-Sprint 6 (confirmação)
+Sprint 6 — Confirmação + criação do agendamento
   ↓
-Sprint 7 (playground)
+Sprint 7 — Polimento e testes (debounce, mutex, timeout, test-flow)
   ↓
-Sprint 8 (polimento)
+Sprint 8 — Integração Z-API (plugar no WhatsApp)
 ```
 
 Cada sprint tem critérios de validação. Não avançar sem a validação da sprint anterior passar.
