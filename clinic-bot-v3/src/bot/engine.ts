@@ -1,6 +1,7 @@
 import { SessionState, BotResponse, StepHandler } from '../state/types';
 import { loadSession, saveSession, createSession, deleteSession } from '../state/store';
-import { logMessage } from '../logger';
+import { logMessage, logError } from '../logger';
+import { config } from '../config';
 import { text, buttons, MSG } from './messages';
 import { saudacaoStep } from './steps/saudacao';
 import { identificacaoStep } from './steps/identificacao';
@@ -23,6 +24,21 @@ const stepHandlers: Record<string, StepHandler> = {
 const MIN_30 = 30 * 60 * 1000;
 const H_24 = 24 * 60 * 60 * 1000;
 
+// ── Horário de atendimento ────────────────────────────────────────────────────
+const DIAS_MAP = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'] as const;
+
+function isDentroDoHorario(): boolean {
+  const now = new Date();
+  const dia = DIAS_MAP[now.getDay()];
+  const horario = config.horario[dia];
+  if (!horario) return false;
+  const [hIni, mIni] = horario.inicio.split(':').map(Number);
+  const [hFim, mFim] = horario.fim.split(':').map(Number);
+  const minutos = now.getHours() * 60 + now.getMinutes();
+  return minutos >= hIni * 60 + mIni && minutos < hFim * 60 + mFim;
+}
+
+// ── Timeout de sessão ─────────────────────────────────────────────────────────
 function checkTimeout(session: SessionState): { session: SessionState; extraResponses: BotResponse[] } {
   const inativo = Date.now() - new Date(session.lastActivityAt).getTime();
   const extra: BotResponse[] = [];
@@ -48,10 +64,50 @@ function checkTimeout(session: SessionState): { session: SessionState; extraResp
   return { session, extraResponses: extra };
 }
 
-// Mutex por phone
+// ── Mutex por phone ───────────────────────────────────────────────────────────
 const _queue = new Map<string, Promise<void>>();
 
+// ── Debounce por phone ────────────────────────────────────────────────────────
+interface DebounceEntry {
+  messages: string[];
+  timer: ReturnType<typeof setTimeout>;
+  resolve: (responses: BotResponse[]) => void;
+}
+const _debounce = new Map<string, DebounceEntry>();
+
 export async function processMessage(phone: string, input: string): Promise<BotResponse[]> {
+  // Comandos imediatos — sem debounce
+  if (input.trim() === '/clear' || input.startsWith('retomar_')) {
+    return _enqueue(phone, input);
+  }
+
+  // Debounce: agrega mensagens rápidas
+  return new Promise<BotResponse[]>((resolve) => {
+    const existing = _debounce.get(phone);
+    if (existing) {
+      clearTimeout(existing.timer);
+      existing.messages.push(input);
+    }
+
+    const entry = existing ?? { messages: [input], timer: null as never, resolve };
+    if (!existing) _debounce.set(phone, entry);
+    else entry.resolve = resolve;
+
+    entry.timer = setTimeout(async () => {
+      _debounce.delete(phone);
+      const combined = entry.messages.join('\n');
+      try {
+        const responses = await _enqueue(phone, combined);
+        entry.resolve(responses);
+      } catch (e) {
+        logError('engine', 'debounce', e);
+        entry.resolve([text('Erro interno. Digite /clear para reiniciar.')]);
+      }
+    }, config.debounceMs);
+  });
+}
+
+async function _enqueue(phone: string, input: string): Promise<BotResponse[]> {
   const prev = _queue.get(phone) ?? Promise.resolve();
   let resolve!: () => void;
   const slot = new Promise<void>(r => { resolve = r; });
@@ -77,6 +133,12 @@ async function _processMessage(phone: string, input: string): Promise<BotRespons
 
   let session = await loadSession(phone) ?? createSession(phone);
 
+  // Horário de atendimento (não bloqueia /clear nem retomada)
+  // SKIP_HORARIO=1 desabilita pra testes
+  if (!process.env.SKIP_HORARIO && !isDentroDoHorario() && session.step !== 'concluido' && session.step !== 'escalado') {
+    return [text(MSG.foraHorario)];
+  }
+
   // Retomada de sessão
   if (input === 'retomar_nao') {
     session = createSession(phone);
@@ -94,7 +156,6 @@ async function _processMessage(phone: string, input: string): Promise<BotRespons
   const { session: checkedSession, extraResponses } = checkTimeout(session);
   session = checkedSession;
 
-  // Se tem mensagem de retomada, envia e espera resposta
   if (extraResponses.length > 0) {
     session.lastActivityAt = new Date().toISOString();
     await saveSession(session);
@@ -122,8 +183,7 @@ async function _processMessage(phone: string, input: string): Promise<BotRespons
   }
 
   for (const r of result.responses) {
-    if (r.type === 'text') logMessage(phone, 'bot', r.text);
-    else if ('text' in r) logMessage(phone, 'bot', r.text);
+    if ('text' in r && r.text) logMessage(phone, 'bot', r.text);
   }
 
   return result.responses;

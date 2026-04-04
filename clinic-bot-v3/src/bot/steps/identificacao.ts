@@ -63,14 +63,7 @@ export const identificacaoStep: StepHandler = async (session, input) => {
       logError('identificacao', 'buscar_pacientes', e);
     }
 
-    // Não encontrado
-    const t = (tentativas.cpf ?? 0) + 1;
-    if (t >= 2) {
-      return {
-        responses: [text(MSG.cpfEscalado)],
-        stateUpdate: { step: 'escalado', tentativas: { ...tentativas, cpf: t } },
-      };
-    }
+    // CPF válido mas paciente não encontrado — oferece cadastro (não conta como tentativa de CPF)
     return {
       responses: [buttons(MSG.cpfNaoEncontrado, [
         { id: 'cadastrar_sim', label: '✅ Cadastrar' },
@@ -79,7 +72,6 @@ export const identificacaoStep: StepHandler = async (session, input) => {
       stateUpdate: {
         subStep: 'aguardando_cadastro',
         tempData: { cpf },
-        tentativas: { ...tentativas, cpf: t },
       },
     };
   }
