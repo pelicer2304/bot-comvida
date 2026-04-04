@@ -1,0 +1,867 @@
+{
+  "forntpageNavigation": {
+    "links": [
+      {
+        "path": "/",
+        "name": "بيت"
+      },
+      {
+        "path": "/front-pages/features/",
+        "name": "سمات"
+      },
+      {
+        "path": "/front-pages/team/",
+        "name": "فريقنا"
+      },
+      {
+        "path": "/front-pages/faq/",
+        "name": "الأسئلة الشائعة"
+      },
+      {
+        "path": "/front-pages/contact/",
+        "name": "اتصال"
+      },
+      {
+        "path": "/dashboard/ecommerce/",
+        "name": "مسؤل"
+      }
+    ],
+    "login": "تسجيل الدخول",
+    "register": "يسجل"
+  },
+  "forntpage": {
+    "banner": {
+      "h1": "رؤى أثناء التنقل: يمكنك الوصول إلى لوحة المعلومات الخاصة بك في أي مكان وفي أي وقت",
+      "p": "تعمل واجهتنا البديهية على تحويل البيانات المعقدة إلى رؤى قابلة للتنفيذ، مما يمكّنك من اتخاذ قرارات مستنيرة بثقة.",
+      "btnText": "ابدأ الآن - إنه مجاني!"
+    }
+  },
+
+  "leftSideMenu": [
+    {
+      "type": "sub-title",
+      "title": "الرئيسية"
+    },
+    {
+      "type": "accordion",
+      "title": "لوحة التحكم",
+      "icon": "dashboard",
+      "accordionPanel": "panel1",
+      "badge": { "text": "3" },
+      "subItems": [
+        { "title": "التجارة الإلكترونية", "href": "/dashboard/ecommerce/" },
+        { "title": "إدارة علاقات العملاء", "href": "/dashboard/crm/" },
+        { "title": "التحليلات", "href": "/dashboard/analytics/" }
+      ]
+    },
+    {
+      "type": "accordion",
+      "title": "الصفحات الأمامية",
+      "icon": "note_stack",
+      "accordionPanel": "panel2",
+      "subItems": [
+        { "title": "الرئيسية", "href": "/" },
+        { "title": "الميزات", "href": "/front-pages/features/" },
+        { "title": "فريقنا", "href": "/front-pages/team/" },
+        { "title": "الأسئلة الشائعة", "href": "/front-pages/faq/" },
+        { "title": "اتصل بنا", "href": "/front-pages/contact/" },
+        { "title": "شهادات العملاء", "href": "/testimonials/" }
+      ]
+    },
+    {
+      "type": "sub-title",
+      "title": "التطبيقات والصفحات"
+    },
+    {
+      "type": "link",
+      "title": "قائمة المهام",
+      "icon": "format_list_bulleted",
+      "href": "/apps/to-do-list/"
+    },
+    {
+      "type": "link",
+      "title": "التقويم",
+      "icon": "date_range",
+      "href": "/apps/calendar/"
+    },
+    {
+      "type": "link",
+      "title": "جهات الاتصال",
+      "icon": "contact_page",
+      "href": "/apps/contacts/"
+    },
+    {
+      "type": "link",
+      "title": "الدردشة",
+      "icon": "chat",
+      "href": "/apps/chat/"
+    },
+    {
+      "type": "accordion",
+      "title": "البريد الإلكتروني",
+      "icon": "mail",
+      "accordionPanel": "panel3",
+      "badge": { "text": "3", "className": "style-two" },
+      "subItems": [
+        { "title": "صندوق الوارد", "href": "/apps/email/" },
+        { "title": "إنشاء رسالة", "href": "/apps/email/compose/" },
+        { "title": "قراءة", "href": "/apps/email/read/" }
+      ]
+    },
+    {
+      "type": "link",
+      "title": "لوحة كانبان",
+      "icon": "team_dashboard",
+      "href": "/apps/kanban-board/"
+    },
+    {
+      "type": "accordion",
+      "title": "مدير الملفات",
+      "icon": "folder_open",
+      "accordionPanel": "panel4",
+      "badge": { "text": "7", "className": "style-three" },
+      "subItems": [
+        { "title": "محرك الأقراص الخاص بي", "href": "/apps/file-manager/" },
+        { "title": "الأصول", "href": "/apps/file-manager/assets/" },
+        { "title": "المشاريع", "href": "/apps/file-manager/projects/" },
+        { "title": "شخصي", "href": "/apps/file-manager/personal/" },
+        { "title": "التطبيقات", "href": "/apps/file-manager/applications/" },
+        { "title": "المستندات", "href": "/apps/file-manager/documents/" },
+        { "title": "الوسائط", "href": "/apps/file-manager/media/" }
+      ]
+    },
+    {
+      "type": "link",
+      "title": "بداية",
+      "icon": "star_border",
+      "href": "/starter/"
+    },
+    {
+      "type": "sub-title",
+      "title": "الوحدات"
+    },
+    {
+      "type": "accordion",
+      "title": "المصادقة",
+      "icon": "lock_open",
+      "accordionPanel": "panel5",
+      "subItems": [
+        { "title": "تسجيل الدخول", "href": "/authentication/sign-in/" },
+        { "title": "إنشاء حساب", "href": "/authentication/sign-up/" },
+        {
+          "title": "نسيت كلمة المرور",
+          "href": "/authentication/forgot-password/"
+        },
+        {
+          "title": "إعادة تعيين كلمة المرور",
+          "href": "/authentication/reset-password/"
+        },
+        {
+          "title": "تأكيد البريد الإلكتروني",
+          "href": "/authentication/confirm-email/"
+        },
+        { "title": "شاشة القفل", "href": "/authentication/lock-screen/" },
+        { "title": "تسجيل الخروج", "href": "/authentication/logout/" }
+      ]
+    },
+    {
+      "type": "accordion",
+      "title": "صفحات إضافية",
+      "icon": "content_copy",
+      "accordionPanel": "panel6",
+      "subItems": [
+        { "title": "التسعير", "href": "/pricing/" },
+        { "title": "الخط الزمني", "href": "/timeline/" },
+        { "title": "الأسئلة الشائعة", "href": "/faq/" },
+        { "title": "المعرض", "href": "/gallery/" }, 
+        { "title": "البحث", "href": "/search/" },
+        { "title": "قريباً", "href": "/coming-soon/" },
+        { "title": "صفحة فارغة", "href": "/blank-page/" },
+        { "title": "شهادات العملاء", "href": "/testimonials/" }
+      ]
+    },
+    {
+      "type": "accordion",
+      "title": "الأخطاء",
+      "icon": "error",
+      "accordionPanel": "panel7",
+      "subItems": [
+        { "title": "صفحة خطأ 404", "href": "/not-found/" },
+        { "title": "خطأ داخلي", "href": "/internal-error/" }
+      ]
+    },
+    {
+      "type": "link",
+      "title": "الخرائط",
+      "icon": "map",
+      "href": "/maps/"
+    },
+    {
+      "type": "link",
+      "title": "الإشعارات",
+      "icon": "notifications",
+      "href": "/notifications/"
+    },
+    {
+      "type": "link",
+      "title": "الأعضاء",
+      "icon": "people",
+      "href": "/members/"
+    },
+    {
+      "type": "sub-title",
+      "title": "أخرى"
+    },
+    {
+      "type": "link",
+      "title": "ملفي الشخصي",
+      "icon": "account_circle",
+      "href": "/my-profile/"
+    },
+    {
+      "type": "accordion",
+      "title": "الإعدادات",
+      "icon": "settings",
+      "accordionPanel": "panel8",
+      "subItems": [
+        { "title": "إعدادات الحساب", "href": "/settings/" },
+        { "title": "تغيير كلمة المرور", "href": "/settings/change-password/" },
+        { "title": "الاتصالات", "href": "/settings/connections/" },
+        { "title": "سياسة الخصوصية", "href": "/settings/privacy-policy/" },
+        { "title": "الشروط والأحكام", "href": "/settings/terms-conditions/" }
+      ]
+    },
+    {
+      "type": "link",
+      "title": "تسجيل الخروج",
+      "icon": "logout",
+      "href": "/authentication/logout/"
+    }
+  ],
+
+  "topHeaderNavbar": {
+    "topMenuApps": [
+      {
+        "name": "فايغما",
+        "url": "https://www.figma.com/",
+        "icon": "/images/icons/figma.svg"
+      },
+      {
+        "name": "دريببل",
+        "url": "https://dribbble.com/",
+        "icon": "/images/icons/dribbble.svg"
+      },
+      {
+        "name": "سبوتيفاي",
+        "url": "https://open.spotify.com/",
+        "icon": "/images/icons/spotify.svg"
+      },
+      {
+        "name": "جيت لاب",
+        "url": "https://gitlab.com/",
+        "icon": "/images/icons/gitlab.svg"
+      },
+      {
+        "name": "جوجل درايف",
+        "url": "https://drive.google.com/drive/u/0/home",
+        "icon": "/images/icons/google-drive.svg"
+      },
+      {
+        "name": "تريلو",
+        "url": "https://trello.com/",
+        "icon": "/images/icons/trello.svg"
+      },
+      {
+        "name": "سلاك",
+        "url": "https://slack.com/",
+        "icon": "/images/icons/slack.svg"
+      },
+      {
+        "name": "بينتيريست",
+        "url": "https://www.pinterest.com/",
+        "icon": "/images/icons/pinterest.svg"
+      },
+      {
+        "name": "فيسبوك",
+        "url": "https://www.facebook.com/",
+        "icon": "/images/icons/facebook.svg"
+      },
+      {
+        "name": "لينكدإن",
+        "url": "https://www.linkedin.com/",
+        "icon": "/images/icons/linkedin.svg"
+      }
+    ],
+
+    "topMenuNotifications": {
+      "title": "الإشعارات",
+      "clearBtn": "مسح الكل",
+      "seeAllBtn": "عرض جميع الإشعارات",
+      "emptyNotifications": "لا توجد إشعارات جديدة",
+
+      "notifications": [
+        {
+          "id": 1,
+          "icon": "sms",
+          "message": "لقد طلبت السحب",
+          "time": "منذ ساعتين",
+          "viewLink": "/notifications"
+        },
+        {
+          "id": 2,
+          "icon": "person",
+          "message": "تمت إضافة مستخدم جديد في Trezo",
+          "time": "منذ 3 ساعات",
+          "viewLink": "/notifications"
+        },
+        {
+          "id": 3,
+          "icon": "mark_email_unread",
+          "message": "لقد طلبت السحب",
+          "time": "منذ يوم",
+          "viewLink": "/notifications"
+        }
+      ]
+    },
+
+    "horizontalNavbar": [
+      {
+        "title": "لوحة التحكم",
+        "icon": "dashboard",
+        "badge": "25",
+        "isMegaMenu": true,
+        "submenu": [
+          { "title": "التجارة الإلكترونية", "href": "/dashboard/ecommerce/" },
+          { "title": "إدارة العلاقات مع العملاء", "href": "/dashboard/crm/" },
+          {
+            "title": "إدارة المشاريع",
+            "href": "/dashboard/project-management/"
+          },
+          { "title": "نظام إدارة التعلم", "href": "/dashboard/lms/" },
+          {
+            "title": "مكتب المساعدة",
+            "href": "/dashboard/helpdesk/",
+            "badge": "ساخن"
+          },
+          { "title": "التحليلات", "href": "/dashboard/analytics/" },
+          { "title": "العملات الرقمية", "href": "/dashboard/crypto/" },
+          { "title": "المبيعات", "href": "/dashboard/sales/" },
+          { "title": "المستشفى", "href": "/dashboard/hospital/" },
+          { "title": "إدارة الموارد البشرية", "href": "/dashboard/hrm/" },
+          { "title": "المدرسة", "href": "/dashboard/school/" },
+          {
+            "title": "مركز الاتصال",
+            "href": "/dashboard/call-center/",
+            "badge": "شائع",
+            "badgeStyle": "style-two"
+          },
+          { "title": "التسويق", "href": "/dashboard/marketing/" },
+          {
+            "title": "الرموز غير القابلة للاستبدال",
+            "href": "/dashboard/nft/"
+          },
+          { "title": "البرمجيات كخدمة", "href": "/dashboard/saas/" },
+          {
+            "title": "العقارات",
+            "href": "/dashboard/real-estate/",
+            "badge": "الأفضل",
+            "badgeStyle": "style-three"
+          },
+          { "title": "الشحن", "href": "/dashboard/shipment/" },
+          { "title": "المالية", "href": "/dashboard/finance/" },
+          { "title": "نظام نقاط البيع", "href": "/dashboard/pos-system/" },
+          { "title": "البودكاست", "href": "/dashboard/podcast/" },
+          {
+            "title": "وسائل التواصل الاجتماعي",
+            "href": "/dashboard/social-media/",
+            "badge": "جديد"
+          },
+          { "title": "الطبيب", "href": "/dashboard/doctor/", "badge": "جديد" },
+          {
+            "title": "صالون التجميل",
+            "href": "/dashboard/beauty-salon/",
+            "badge": "جديد"
+          },
+          {
+            "title": "تحليلات المتجر",
+            "href": "/dashboard/store-analytics/",
+            "badge": "جديد"
+          },
+          {
+            "title": "المطعم",
+            "href": "/dashboard/restaurant/",
+            "badge": "جديد"
+          }
+        ]
+      },
+      {
+        "title": "التطبيقات",
+        "icon": "deployed_code",
+        "submenu": [
+          {
+            "title": "قائمة المهام",
+            "href": "/apps/to-do-list/",
+            "icon": "format_list_bulleted"
+          },
+          {
+            "title": "التقويم",
+            "href": "/apps/calendar/",
+            "icon": "date_range"
+          },
+          {
+            "title": "جهات الاتصال",
+            "href": "/apps/contacts/",
+            "icon": "contact_page"
+          },
+          { "title": "الدردشة", "href": "/apps/chat/", "icon": "chat" },
+          {
+            "title": "البريد الإلكتروني",
+            "icon": "mail",
+            "badge": "3",
+            "badgeStyle": "style-two",
+            "submenu": [
+              { "title": "صندوق الوارد", "href": "/apps/email/" },
+              { "title": "إنشاء بريد", "href": "/apps/email/compose/" },
+              { "title": "قراءة", "href": "/apps/email/read/" }
+            ]
+          },
+          {
+            "title": "لوحة كانبان",
+            "href": "/apps/kanban-board/",
+            "icon": "team_dashboard"
+          },
+          {
+            "title": "مدير الملفات",
+            "icon": "folder_open",
+            "badge": "7",
+            "badgeStyle": "style-three",
+            "submenu": [
+              {
+                "title": "محرك الأقراص الخاص بي",
+                "href": "/apps/file-manager/"
+              },
+              { "title": "الأصول", "href": "/apps/file-manager/assets/" },
+              { "title": "المشاريع", "href": "/apps/file-manager/projects/" },
+              { "title": "الشخصي", "href": "/apps/file-manager/personal/" },
+              {
+                "title": "التطبيقات",
+                "href": "/apps/file-manager/applications/"
+              },
+              { "title": "الوثائق", "href": "/apps/file-manager/documents/" },
+              { "title": "الوسائط", "href": "/apps/file-manager/media/" }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "الصفحات",
+        "icon": "layers",
+        "submenu": [
+          {
+            "title": "الصفحات الأمامية",
+            "icon": "note_stack",
+            "submenu": [
+              { "title": "الرئيسية", "href": "/" },
+              { "title": "الميزات", "href": "/front-pages/features/" },
+              { "title": "فريقنا", "href": "/front-pages/team/" },
+              { "title": "الأسئلة الشائعة", "href": "/front-pages/faq/" },
+              { "title": "اتصل بنا", "href": "/front-pages/contact/" }
+            ]
+          },
+          {
+            "title": "التجارة الإلكترونية",
+            "icon": "shopping_cart",
+            "submenu": [
+              {
+                "title": "المنتجات",
+                "submenu": [
+                  { "title": "شبكة المنتجات", "href": "/ecommerce/" },
+                  {
+                    "title": "قائمة المنتجات",
+                    "href": "/ecommerce/products-list/"
+                  },
+                  {
+                    "title": "تفاصيل المنتج",
+                    "href": "/ecommerce/products-list/details/"
+                  },
+                  {
+                    "title": "إنشاء منتج",
+                    "href": "/ecommerce/create-product/"
+                  },
+                  {
+                    "title": "تعديل منتج",
+                    "href": "/ecommerce/edit-product/"
+                  }
+                ]
+              },
+              { "title": "عربة التسوق", "href": "/ecommerce/cart/" },
+              { "title": "الدفع", "href": "/ecommerce/checkout/" },
+              { "title": "الطلبات", "href": "/ecommerce/orders/" },
+              {
+                "title": "تفاصيل الطلب",
+                "href": "/ecommerce/orders/details/"
+              },
+              { "title": "إنشاء طلب", "href": "/ecommerce/orders/create/" },
+              {
+                "title": "تتبع الطلب",
+                "href": "/ecommerce/orders/tracking/"
+              },
+              { "title": "العملاء", "href": "/ecommerce/customers/" },
+              {
+                "title": "تفاصيل العميل",
+                "href": "/ecommerce/customers/details/"
+              },
+              { "title": "الفئات", "href": "/ecommerce/categories/" },
+              { "title": "البائعون", "href": "/ecommerce/sellers/" },
+              {
+                "title": "تفاصيل البائع",
+                "href": "/ecommerce/sellers/details/"
+              },
+              {
+                "title": "إنشاء بائع",
+                "href": "/ecommerce/sellers/create/"
+              },
+              { "title": "المراجعات", "href": "/ecommerce/reviews/" },
+              { "title": "المبالغ المستردة", "href": "/ecommerce/refunds/" }
+            ]
+          },
+          {
+            "title": "إدارة العلاقات مع العملاء",
+            "icon": "handshake",
+            "submenu": [
+              { "title": "جهات الاتصال", "href": "/crm/contacts/" },
+              { "title": "العملاء", "href": "/crm/customers/" },
+              { "title": "العملاء المحتملون", "href": "/crm/leads/" },
+              { "title": "الصفقات", "href": "/crm/deals/" }
+            ]
+          },
+          {
+            "title": "إدارة المشاريع",
+            "icon": "description",
+            "submenu": [
+              {
+                "title": "نظرة عامة على المشروع",
+                "href": "/project-management/project-overview/"
+              },
+              {
+                "title": "قائمة المشاريع",
+                "href": "/project-management/projects-list/"
+              },
+              {
+                "title": "إنشاء مشروع",
+                "href": "/project-management/create-project/"
+              },
+              { "title": "العملاء", "href": "/project-management/clients/" },
+              { "title": "الفرق", "href": "/project-management/teams/" },
+              {
+                "title": "لوحة كانبان",
+                "href": "/project-management/kanban-board/"
+              },
+              { "title": "المستخدمون", "href": "/project-management/users/" }
+            ]
+          },
+          {
+            "title": "نظام إدارة التعلم",
+            "icon": "auto_stories",
+            "submenu": [
+              { "title": "قائمة الدورات", "href": "/lms/courses/" },
+              { "title": "تفاصيل الدورة", "href": "/lms/courses/details/" },
+              { "title": "معاينة الدرس", "href": "/lms/lesson-preview/" },
+              { "title": "إنشاء دورة", "href": "/lms/create-course/" },
+              { "title": "تعديل دورة", "href": "/lms/edit-course/" },
+              { "title": "المدرسون", "href": "/lms/instructors/" }
+            ]
+          },
+          {
+            "title": "مكتب المساعدة",
+            "icon": "support",
+            "submenu": [
+              { "title": "التذاكر", "href": "/helpdesk/tickets/" },
+              {
+                "title": "تفاصيل التذكرة",
+                "href": "/helpdesk/tickets/details/"
+              },
+              { "title": "الوكلاء", "href": "/helpdesk/agents/" },
+              { "title": "التقارير", "href": "/helpdesk/reports/" }
+            ]
+          },
+          {
+            "title": "سوق الرموز غير القابلة للاستبدال",
+            "icon": "store",
+            "submenu": [
+              { "title": "السوق", "href": "/nft/marketplace/" },
+              { "title": "استكشاف الكل", "href": "/nft/explore-all/" },
+              { "title": "المزاد المباشر", "href": "/nft/live-auction/" },
+              { "title": "تفاصيل الرمز", "href": "/nft/details/" },
+              { "title": "المبدعون", "href": "/nft/creators/" },
+              { "title": "تفاصيل المبدع", "href": "/nft/creators/details/" },
+              { "title": "اتصال المحفظة", "href": "/nft/wallet-connect/" }
+            ]
+          },
+          {
+            "title": "العقارات",
+            "icon": "real_estate_agent",
+            "submenu": [
+              {
+                "title": "قائمة العقارات",
+                "href": "/real-estate/property-list/"
+              },
+              {
+                "title": "تفاصيل العقار",
+                "href": "/real-estate/property-details/"
+              },
+              { "title": "إضافة عقار", "href": "/real-estate/add-property/" },
+              { "title": "الوكلاء", "href": "/real-estate/agents/" },
+              {
+                "title": "تفاصيل الوكيل",
+                "href": "/real-estate/agents/details/"
+              },
+              { "title": "إضافة وكيل", "href": "/real-estate/agents/add/" },
+              { "title": "العملاء", "href": "/real-estate/customers/" }
+            ]
+          },
+          {
+            "title": "المالية",
+            "icon": "calculate",
+            "submenu": [
+              { "title": "المحفظة", "href": "/finance/wallet/" },
+              { "title": "المعاملات", "href": "/finance/transactions/" }
+            ]
+          },
+          {
+            "title": "الفعاليات",
+            "icon": "local_activity",
+            "submenu": [
+              { "title": "شبكة الفعاليات", "href": "/events/" },
+              { "title": "قائمة الفعاليات", "href": "/events/list/" },
+              { "title": "تفاصيل الفعالية", "href": "/events/details/" },
+              {
+                "title": "إنشاء فعالية",
+                "href": "/events/create-an-event/"
+              },
+              { "title": "تعديل فعالية", "href": "/events/edit-an-event/" }
+            ]
+          },
+          {
+            "title": "الاجتماعي",
+            "icon": "share",
+            "submenu": [
+              { "title": "الملف الشخصي", "href": "/social/profile/" },
+              { "title": "الإعدادات", "href": "/social/settings/" }
+            ]
+          },
+          {
+            "title": "الفواتير",
+            "icon": "content_paste",
+            "submenu": [
+              { "title": "الفواتير", "href": "/invoices/" },
+              { "title": "تفاصيل الفاتورة", "href": "/invoices/details/" },
+              { "title": "إنشاء فاتورة", "href": "/invoices/create/" },
+              { "title": "تعديل فاتورة", "href": "/invoices/edit/" }
+            ]
+          },
+          {
+            "title": "المستخدمون",
+            "icon": "person",
+            "submenu": [
+              { "title": "أعضاء الفريق", "href": "/users/" },
+              { "title": "قائمة المستخدمين", "href": "/users/users-list/" },
+              { "title": "إضافة مستخدم", "href": "/users/add-user/" }
+            ]
+          },
+          {
+            "title": "الملف الشخصي",
+            "icon": "account_box",
+            "submenu": [
+              { "title": "ملف المستخدم", "href": "/profile/" },
+              { "title": "الفرق", "href": "/profile/teams/" },
+              { "title": "المشاريع", "href": "/profile/projects/" }
+            ]
+          },
+          { "title": "البداية", "href": "/starter/", "icon": "star_border" }
+        ]
+      },
+      {
+        "title": "الوحدات",
+        "icon": "token",
+        "submenu": [
+          {
+            "title": "الأيقونات",
+            "icon": "emoji_emotions",
+            "submenu": [
+              {
+                "title": "رموز المواد",
+                "href": "/icons/material-symbols/"
+              },
+              { "title": "رموز ريميكس", "href": "/icons/remixicon/" }
+            ]
+          },
+          { "title": "الجداول", "href": "/tables/", "icon": "table_chart" },
+          {
+            "title": "المصادقة",
+            "icon": "lock_open",
+            "submenu": [
+              { "title": "تسجيل الدخول", "href": "/authentication/sign-in/" },
+              { "title": "التسجيل", "href": "/authentication/sign-up/" },
+              {
+                "title": "نسيت كلمة المرور",
+                "href": "/authentication/forgot-password/"
+              },
+              {
+                "title": "إعادة تعيين كلمة المرور",
+                "href": "/authentication/reset-password/"
+              },
+              {
+                "title": "تأكيد البريد الإلكتروني",
+                "href": "/authentication/confirm-email/"
+              },
+              {
+                "title": "شاشة القفل",
+                "href": "/authentication/lock-screen/"
+              },
+              { "title": "تسجيل الخروج", "href": "/authentication/logout/" }
+            ]
+          },
+          {
+            "title": "صفحات إضافية",
+            "icon": "content_copy",
+            "submenu": [
+              { "title": "التسعير", "href": "/pricing/" },
+              { "title": "الجدول الزمني", "href": "/timeline/" },
+              { "title": "الأسئلة الشائعة", "href": "/faq/" },
+              { "title": "المعرض", "href": "/gallery/" }, 
+              { "title": "البحث", "href": "/search/" },
+              { "title": "صفحة فارغة", "href": "/blank-page/" }
+            ]
+          },
+          {
+            "title": "الأخطاء",
+            "icon": "error",
+            "submenu": [
+              { "title": "صفحة الخطأ 404", "href": "/not-found/" },
+              { "title": "خطأ داخلي", "href": "/internal-error/" }
+            ]
+          },
+          { "title": "الأدوات", "href": "/widgets/", "icon": "widgets" },
+          { "title": "الخرائط", "href": "/maps/", "icon": "map" },
+          {
+            "title": "الإشعارات",
+            "href": "/notifications/",
+            "icon": "notifications"
+          },
+          { "title": "الأعضاء", "href": "/members/", "icon": "people" }
+        ]
+      },
+      {
+        "title": "النماذج",
+        "icon": "forum",
+        "submenu": [
+          { "title": "العناصر الأساسية", "href": "/forms/basic-elements/" },
+          { "title": "العناصر المتقدمة", "href": "/forms/advanced-elements/" },
+          { "title": "المحررون", "href": "/forms/editors/" },
+          { "title": "رفع الملفات", "href": "/forms/file-uploader/" }
+        ]
+      },
+      {
+        "title": "الرسوم البيانية",
+        "icon": "pie_chart",
+        "submenu": [
+          { "title": "الخط", "href": "/charts/line/" },
+          { "title": "المنطقة", "href": "/charts/area/" },
+          { "title": "العمود", "href": "/charts/column/" },
+          { "title": "مختلط", "href": "/charts/mixed/" },
+          { "title": "شريط نصف قطري", "href": "/charts/radialbar/" },
+          { "title": "الرادار", "href": "/charts/radar/" },
+          { "title": "الدائرة", "href": "/charts/pie/" },
+          { "title": "القطبي", "href": "/charts/polar/" },
+          { "title": "المزيد", "href": "/charts/more/" }
+        ]
+      },
+      {
+        "title": "أخرى",
+        "icon": "open_run",
+        "submenu": [
+          {
+            "title": "ملفي الشخصي",
+            "href": "/my-profile/",
+            "icon": "account_circle"
+          },
+          {
+            "title": "الإعدادات",
+            "icon": "settings",
+            "submenu": [
+              { "title": "إعدادات الحساب", "href": "/settings/" },
+              {
+                "title": "تغيير كلمة المرور",
+                "href": "/settings/change-password/"
+              },
+              { "title": "الاتصالات", "href": "/settings/connections/" },
+              {
+                "title": "سياسة الخصوصية",
+                "href": "/settings/privacy-policy/"
+              },
+              {
+                "title": "الشروط والأحكام",
+                "href": "/settings/terms-conditions/"
+              }
+            ]
+          },
+          {
+            "title": "قائمة متعددة المستويات",
+            "icon": "unfold_more",
+            "submenu": [
+              { "title": "الأول", "href": "#" },
+              { "title": "الثاني", "href": "#" },
+              {
+                "title": "الثالث",
+                "badge": "3",
+                "submenu": [
+                  { "title": "الثالث 1", "href": "#" },
+                  {
+                    "title": "الثالث 2",
+                    "submenu": [{ "title": "الرابع 1", "href": "#" }]
+                  },
+                  { "title": "الثالث 3", "href": "#" }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "تسجيل الخروج",
+            "href": "/authentication/logout",
+            "icon": "logout"
+          }
+        ]
+      }
+    ]
+  },
+
+  "testimonialsPage": {
+    "testimonialsStyle1": [
+      {
+        "id": 1,
+        "name": "سارة جونسون",
+        "position": "مديرة مالية",
+        "image": "/images/users/user6.jpg",
+        "rating": 5,
+        "comment": "الإحصاء هو علم استخدام البيانات لاتخاذ القرارات. هذا الأمر ذو صلة بجميع مجالات العمل تقريبًا وهناك العديد من فرص العمل المتاحة."
+      },
+      {
+        "id": 2,
+        "name": "مايكل سميث",
+        "position": "مطور برمجيات",
+        "image": "/images/users/user7.jpg",
+        "rating": 4.5,
+        "comment": "الإحصاء هو علم استخدام البيانات لاتخاذ القرارات. هذا الأمر ذو صلة بجميع مجالات العمل تقريبًا وهناك العديد من فرص العمل المتاحة."
+      },
+      {
+        "id": 3,
+        "name": "إيميلي براون",
+        "position": "مطورة مواقع الويب",
+        "image": "/images/users/user8.jpg",
+        "rating": 5,
+        "comment": "الإحصاء هو علم استخدام البيانات لاتخاذ القرارات. هذا الأمر ذو صلة بجميع مجالات العمل تقريبًا وهناك العديد من فرص العمل المتاحة."
+      }
+    ]
+  }
+}

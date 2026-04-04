@@ -1,0 +1,105 @@
+[dir=ar], [lang=ar] {
+  direction: rtl;
+}
+[dir=ar] table th, [dir=ar] table td, [lang=ar] table th, [lang=ar] table td {
+  text-align: right;
+}
+[dir=ar] .MuiTimeline-root .MuiTypography-root, [lang=ar] .MuiTimeline-root .MuiTypography-root {
+  text-align: right;
+}
+[dir=ar] .-mr-4, [lang=ar] .-mr-4 {
+  margin-right: 0;
+  margin-left: -4px;
+}
+[dir=ar] .rtl-tf-scaleX-1, [lang=ar] .rtl-tf-scaleX-1 {
+  transform: scaleX(-1);
+}
+[dir=ar] .apexcharts-canvas, [lang=ar] .apexcharts-canvas {
+  direction: ltr;
+}
+[dir=ar] .apexcharts-canvas .apexcharts-tooltip, [lang=ar] .apexcharts-canvas .apexcharts-tooltip {
+  direction: rtl;
+}
+[dir=ar] .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-marker, [lang=ar] .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-marker {
+  margin-right: 0;
+  margin-left: 8px;
+}
+[dir=ar] .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-series-group, [lang=ar] .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-series-group {
+  justify-content: start;
+}
+[dir=ar] .apexcharts-canvas .apexcharts-legend-series, [lang=ar] .apexcharts-canvas .apexcharts-legend-series {
+  direction: rtl;
+}
+[dir=ar] .apexcharts-canvas .apexcharts-legend-series .apexcharts-legend-marker, [lang=ar] .apexcharts-canvas .apexcharts-legend-series .apexcharts-legend-marker {
+  left: auto !important;
+  right: -2px;
+  margin-right: 0;
+  margin-left: 3px;
+}
+[dir=ar] .apexcharts-canvas .apexcharts-legend-series .apexcharts-legend-text, [lang=ar] .apexcharts-canvas .apexcharts-legend-series .apexcharts-legend-text {
+  padding-left: 0;
+  padding-right: 15px;
+  margin-left: 0;
+  margin-right: -15px;
+}
+[dir=ar] .crm-ap, [dir=ar] .crm-to, [dir=ar] .crm-lc, [dir=ar] .crm-rg, [lang=ar] .crm-ap, [lang=ar] .crm-to, [lang=ar] .crm-lc, [lang=ar] .crm-rg {
+  right: auto;
+  left: -9px;
+}
+[dir=ar] .MuiAvatarGroup-root .MuiAvatar-root, [lang=ar] .MuiAvatarGroup-root .MuiAvatar-root {
+  margin-left: 0;
+  margin-right: -8px;
+}
+[dir=ar] .MuiAvatarGroup-root .MuiAvatar-root:last-child, [lang=ar] .MuiAvatarGroup-root .MuiAvatar-root:last-child {
+  margin-right: 0;
+}
+[dir=ar] .MuiAccordion-root .MuiAccordionSummary-expandIconWrapper, [lang=ar] .MuiAccordion-root .MuiAccordionSummary-expandIconWrapper {
+  margin-left: 10px;
+}
+[dir=ar] .MuiChip-root, [lang=ar] .MuiChip-root {
+  padding: 5px 10px;
+}
+[dir=ar] .MuiChip-root .MuiChip-label, [lang=ar] .MuiChip-root .MuiChip-label {
+  padding: 0;
+}
+[dir=ar] .MuiAlert-root .MuiAlert-icon, [lang=ar] .MuiAlert-root .MuiAlert-icon {
+  margin-right: 0;
+  margin-left: 12px;
+}
+[dir=ar] .MuiCard-root .MuiCardHeader-root, [lang=ar] .MuiCard-root .MuiCardHeader-root {
+  margin-right: 0;
+  margin-left: 16px;
+}
+[dir=ar] .MuiStep-horizontal .MuiStepLabel-iconContainer, [lang=ar] .MuiStep-horizontal .MuiStepLabel-iconContainer {
+  padding-right: 0;
+  padding-left: 8px;
+}
+[dir=ar] .MuiStep-vertical .MuiStepLabel-root, [lang=ar] .MuiStep-vertical .MuiStepLabel-root {
+  text-align: right;
+}
+[dir=ar] .MuiStep-vertical .MuiStepLabel-iconContainer, [lang=ar] .MuiStep-vertical .MuiStepLabel-iconContainer {
+  padding-right: 0;
+  padding-left: 8px;
+}
+[dir=ar] .nft-slide .swiper-button-prev, [lang=ar] .nft-slide .swiper-button-prev {
+  left: auto;
+  right: 0;
+}
+[dir=ar] .nft-slide .swiper-button-next, [lang=ar] .nft-slide .swiper-button-next {
+  right: auto;
+  left: 0;
+}
+[dir=ar] .tc-slide .swiper-pagination, [lang=ar] .tc-slide .swiper-pagination {
+  text-align: right;
+}
+[dir=ar] .rp-slide .swiper-pagination, [lang=ar] .rp-slide .swiper-pagination {
+  text-align: right;
+}
+[dir=ar] .ml-auto, [lang=ar] .ml-auto {
+  margin-left: 0;
+  margin-right: auto;
+}
+[dir=ar] .mr-auto, [lang=ar] .mr-auto {
+  margin-right: 0;
+  margin-left: auto;
+}/*# sourceMappingURL=rtl.css.map */

@@ -1,0 +1,857 @@
+{
+  "forntpageNavigation": {
+    "links": [
+      {
+        "path": "/",
+        "name": "Home"
+      },
+      {
+        "path": "/front-pages/features/",
+        "name": "Features"
+      },
+      {
+        "path": "/front-pages/team/",
+        "name": "Our Team"
+      },
+      {
+        "path": "/front-pages/faq/",
+        "name": "Faq's"
+      },
+      {
+        "path": "/front-pages/contact/",
+        "name": "Contact"
+      },
+      {
+        "path": "/dashboard/ecommerce/",
+        "name": "Admin"
+      }
+    ],
+    "login": "Login",
+    "register": "Register"
+  },
+  "forntpage": {
+    "banner": {
+      "h1": "Insights On-the-Go: Access Your Dashboard Anywhere, Anytime",
+      "p": "Our intuitive interface transforms complex data into actionable insights, empowering you to make informed decisions with confidence.",
+      "btnText": "Get started - It is free!"
+    }
+  },
+
+  "leftSideMenu": [
+    {
+      "type": "sub-title",
+      "title": "MAIN"
+    },
+    {
+      "type": "accordion",
+      "title": "Dashboard",
+      "icon": "dashboard",
+      "accordionPanel": "panel1",
+      "badge": { "text": "3" },
+      "subItems": [
+        { "title": "eCommerce", "href": "/dashboard/ecommerce/" },
+        { "title": "CRM", "href": "/dashboard/crm/" },
+        { "title": "Analytics", "href": "/dashboard/analytics/" }
+      ]
+    },
+    {
+      "type": "accordion",
+      "title": "Front Pages",
+      "icon": "note_stack",
+      "accordionPanel": "panel2",
+      "subItems": [
+        { "title": "Home", "href": "/" },
+        { "title": "Features", "href": "/front-pages/features/" },
+        { "title": "Our Team", "href": "/front-pages/team/" },
+        { "title": "FAQ's", "href": "/front-pages/faq/" },
+        { "title": "Contact", "href": "/front-pages/contact/" }
+      ]
+    },
+    {
+      "type": "sub-title",
+      "title": "APPS & PAGES"
+    },
+    {
+      "type": "link",
+      "title": "To Do List",
+      "icon": "format_list_bulleted",
+      "href": "/apps/to-do-list/"
+    },
+    {
+      "type": "link",
+      "title": "Calendar",
+      "icon": "date_range",
+      "href": "/apps/calendar/"
+    },
+    {
+      "type": "link",
+      "title": "Contacts",
+      "icon": "contact_page",
+      "href": "/apps/contacts/"
+    },
+    {
+      "type": "link",
+      "title": "Chat",
+      "icon": "chat",
+      "href": "/apps/chat/"
+    },
+    {
+      "type": "accordion",
+      "title": "Email",
+      "icon": "mail",
+      "accordionPanel": "panel3",
+      "badge": { "text": "3", "className": "style-two" },
+      "subItems": [
+        { "title": "Inbox", "href": "/apps/email/" },
+        { "title": "Compose", "href": "/apps/email/compose/" },
+        { "title": "Read", "href": "/apps/email/read/" }
+      ]
+    },
+    {
+      "type": "link",
+      "title": "Kanban Board",
+      "icon": "team_dashboard",
+      "href": "/apps/kanban-board/"
+    },
+    {
+      "type": "accordion",
+      "title": "File Manager",
+      "icon": "folder_open",
+      "accordionPanel": "panel4",
+      "badge": { "text": "7", "className": "style-three" },
+      "subItems": [
+        { "title": "My Drive", "href": "/apps/file-manager/" },
+        { "title": "Assets", "href": "/apps/file-manager/assets/" },
+        { "title": "Projects", "href": "/apps/file-manager/projects/" },
+        { "title": "Personal", "href": "/apps/file-manager/personal/" },
+        { "title": "Applications", "href": "/apps/file-manager/applications/" },
+        { "title": "Documents", "href": "/apps/file-manager/documents/" },
+        { "title": "Media", "href": "/apps/file-manager/media/" }
+      ]
+    },
+    {
+      "type": "link",
+      "title": "Starter",
+      "icon": "star_border",
+      "href": "/starter/"
+    },
+    {
+      "type": "sub-title",
+      "title": "MODULES"
+    },
+    {
+      "type": "accordion",
+      "title": "Authentication",
+      "icon": "lock_open",
+      "accordionPanel": "panel5",
+      "subItems": [
+        { "title": "Sign In", "href": "/authentication/sign-in/" },
+        { "title": "Sign Up", "href": "/authentication/sign-up/" },
+        {
+          "title": "Forgot Password",
+          "href": "/authentication/forgot-password/"
+        },
+        {
+          "title": "Reset Password",
+          "href": "/authentication/reset-password/"
+        },
+        { "title": "Confirm Email", "href": "/authentication/confirm-email/" },
+        { "title": "Lock Screen", "href": "/authentication/lock-screen/" },
+        { "title": "Logout", "href": "/authentication/logout/" }
+      ]
+    },
+    {
+      "type": "accordion",
+      "title": "Extra Pages",
+      "icon": "content_copy",
+      "accordionPanel": "panel6",
+      "subItems": [
+        { "title": "Pricing", "href": "/pricing/" },
+        { "title": "Timeline", "href": "/timeline/" },
+        { "title": "FAQ", "href": "/faq/" },
+        { "title": "Gallery", "href": "/gallery/" },
+        { "title": "Search", "href": "/search/" },
+        { "title": "Coming Soon", "href": "/coming-soon/" },
+        { "title": "Blank Page", "href": "/blank-page/" },
+        { "title": "Testimonials", "href": "/testimonials/" }
+      ]
+    },
+    {
+      "type": "accordion",
+      "title": "Errors",
+      "icon": "error",
+      "accordionPanel": "panel7",
+      "subItems": [
+        { "title": "404 Error Page", "href": "/not-found/" },
+        { "title": "Internal Error", "href": "/internal-error/" }
+      ]
+    },
+    {
+      "type": "link",
+      "title": "Maps",
+      "icon": "map",
+      "href": "/maps/"
+    },
+    {
+      "type": "link",
+      "title": "Notifications",
+      "icon": "notifications",
+      "href": "/notifications/"
+    },
+    {
+      "type": "link",
+      "title": "Members",
+      "icon": "people",
+      "href": "/members/"
+    },
+    {
+      "type": "sub-title",
+      "title": "OTHERS"
+    },
+    {
+      "type": "link",
+      "title": "My Profile",
+      "icon": "account_circle",
+      "href": "/my-profile/"
+    },
+    {
+      "type": "accordion",
+      "title": "Settings",
+      "icon": "settings",
+      "accordionPanel": "panel8",
+      "subItems": [
+        { "title": "Account Settings", "href": "/settings/" },
+        { "title": "Change Password", "href": "/settings/change-password/" },
+        { "title": "Connections", "href": "/settings/connections/" },
+        { "title": "Privacy Policy", "href": "/settings/privacy-policy/" },
+        { "title": "Terms & Conditions", "href": "/settings/terms-conditions/" }
+      ]
+    },
+    {
+      "type": "link",
+      "title": "Logout",
+      "icon": "logout",
+      "href": "/authentication/logout/"
+    }
+  ],
+
+  "topHeaderNavbar": {
+    "topMenuApps": [
+      {
+        "name": "Figma",
+        "url": "https://www.figma.com/",
+        "icon": "/images/icons/figma.svg"
+      },
+      {
+        "name": "Dribbble",
+        "url": "https://dribbble.com/",
+        "icon": "/images/icons/dribbble.svg"
+      },
+      {
+        "name": "Spotify",
+        "url": "https://open.spotify.com/",
+        "icon": "/images/icons/spotify.svg"
+      },
+      {
+        "name": "Gitlab",
+        "url": "https://gitlab.com/",
+        "icon": "/images/icons/gitlab.svg"
+      },
+      {
+        "name": "GDrive",
+        "url": "https://drive.google.com/drive/u/0/home",
+        "icon": "/images/icons/google-drive.svg"
+      },
+      {
+        "name": "Trello",
+        "url": "https://trello.com/",
+        "icon": "/images/icons/trello.svg"
+      },
+      {
+        "name": "Slack",
+        "url": "https://slack.com/",
+        "icon": "/images/icons/slack.svg"
+      },
+      {
+        "name": "Pinterest",
+        "url": "https://www.pinterest.com/",
+        "icon": "/images/icons/pinterest.svg"
+      },
+      {
+        "name": "Facebook",
+        "url": "https://www.facebook.com/",
+        "icon": "/images/icons/facebook.svg"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://www.linkedin.com/",
+        "icon": "/images/icons/linkedin.svg"
+      }
+    ],
+
+    "topMenuNotifications": {
+      "title": "Notifications",
+      "clearBtn": "Clear all",
+      "seeAllBtn": "See All Notifications",
+      "emptyNotifications": "No new notifications",
+
+      "notifications": [
+        {
+          "id": 1,
+          "icon": "sms",
+          "message": "You have requested to withdrawal",
+          "time": "2 hrs ago",
+          "viewLink": "/notifications"
+        },
+        {
+          "id": 2,
+          "icon": "person",
+          "message": "A new user added in Trezo",
+          "time": "3 hrs ago",
+          "viewLink": "/notifications"
+        },
+        {
+          "id": 3,
+          "icon": "mark_email_unread",
+          "message": "You have requested to withdrawal",
+          "time": "1 day ago",
+          "viewLink": "/notifications"
+        }
+      ]
+    },
+
+    "horizontalNavbar": [
+      {
+        "title": "Dashboard",
+        "icon": "dashboard",
+        "badge": "25",
+        "isMegaMenu": true,
+        "submenu": [
+          { "title": "eCommerce", "href": "/dashboard/ecommerce/" },
+          { "title": "CRM", "href": "/dashboard/crm/" },
+          {
+            "title": "Project Management",
+            "href": "/dashboard/project-management/"
+          },
+          { "title": "LMS", "href": "/dashboard/lms/" },
+          {
+            "title": "HelpDesk",
+            "href": "/dashboard/helpdesk/",
+            "badge": "Hot"
+          },
+          { "title": "Analytics", "href": "/dashboard/analytics/" },
+          { "title": "Crypto", "href": "/dashboard/crypto/" },
+          { "title": "Sales", "href": "/dashboard/sales/" },
+          { "title": "Hospital", "href": "/dashboard/hospital/" },
+          { "title": "HRM", "href": "/dashboard/hrm/" },
+          { "title": "School", "href": "/dashboard/school/" },
+          {
+            "title": "Call Center",
+            "href": "/dashboard/call-center/",
+            "badge": "Popular",
+            "badgeStyle": "style-two"
+          },
+          { "title": "Marketing", "href": "/dashboard/marketing/" },
+          { "title": "NFT", "href": "/dashboard/nft/" },
+          { "title": "SaaS", "href": "/dashboard/saas/" },
+          {
+            "title": "Real Estate",
+            "href": "/dashboard/real-estate/",
+            "badge": "Top",
+            "badgeStyle": "style-three"
+          },
+          { "title": "Shipment", "href": "/dashboard/shipment/" },
+          { "title": "Finance", "href": "/dashboard/finance/" },
+          { "title": "POS System", "href": "/dashboard/pos-system/" },
+          { "title": "Podcast", "href": "/dashboard/podcast/" },
+          {
+            "title": "Social Media",
+            "href": "/dashboard/social-media/",
+            "badge": "New"
+          },
+          { "title": "Doctor", "href": "/dashboard/doctor/", "badge": "New" },
+          {
+            "title": "Beauty Salon",
+            "href": "/dashboard/beauty-salon/",
+            "badge": "New"
+          },
+          {
+            "title": "Store Analytics",
+            "href": "/dashboard/store-analytics/",
+            "badge": "New"
+          },
+          {
+            "title": "Restaurant",
+            "href": "/dashboard/restaurant/",
+            "badge": "New"
+          }
+        ]
+      },
+      {
+        "title": "Apps",
+        "icon": "deployed_code",
+        "submenu": [
+          {
+            "title": "To Do List",
+            "href": "/apps/to-do-list/",
+            "icon": "format_list_bulleted"
+          },
+          {
+            "title": "Calendar",
+            "href": "/apps/calendar/",
+            "icon": "date_range"
+          },
+          {
+            "title": "Contacts",
+            "href": "/apps/contacts/",
+            "icon": "contact_page"
+          },
+          { "title": "Chat", "href": "/apps/chat/", "icon": "chat" },
+          {
+            "title": "Email",
+            "icon": "mail",
+            "badge": "3",
+            "badgeStyle": "style-two",
+            "submenu": [
+              { "title": "Inbox", "href": "/apps/email/" },
+              { "title": "Compose", "href": "/apps/email/compose/" },
+              { "title": "Read", "href": "/apps/email/read/" }
+            ]
+          },
+          {
+            "title": "Kanban Board",
+            "href": "/apps/kanban-board/",
+            "icon": "team_dashboard"
+          },
+          {
+            "title": "File Manager",
+            "icon": "folder_open",
+            "badge": "7",
+            "badgeStyle": "style-three",
+            "submenu": [
+              { "title": "My Drive", "href": "/apps/file-manager/" },
+              { "title": "Assets", "href": "/apps/file-manager/assets/" },
+              { "title": "Projects", "href": "/apps/file-manager/projects/" },
+              { "title": "Personal", "href": "/apps/file-manager/personal/" },
+              {
+                "title": "Applications",
+                "href": "/apps/file-manager/applications/"
+              },
+              { "title": "Documents", "href": "/apps/file-manager/documents/" },
+              { "title": "Media", "href": "/apps/file-manager/media/" }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Pages",
+        "icon": "layers",
+        "submenu": [
+          {
+            "title": "Front Pages",
+            "icon": "note_stack",
+            "submenu": [
+              { "title": "Home", "href": "/" },
+              { "title": "Features", "href": "/front-pages/features/" },
+              { "title": "Our Team", "href": "/front-pages/team/" },
+              { "title": "FAQ’s", "href": "/front-pages/faq/" },
+              { "title": "Contact", "href": "/front-pages/contact/" }
+            ]
+          },
+          {
+            "title": "eCommerce",
+            "icon": "shopping_cart",
+            "submenu": [
+              {
+                "title": "Products",
+                "submenu": [
+                  { "title": "Products Grid", "href": "/ecommerce/" },
+                  {
+                    "title": "Products List",
+                    "href": "/ecommerce/products-list/"
+                  },
+                  {
+                    "title": "Product Details",
+                    "href": "/ecommerce/products-list/details/"
+                  },
+                  {
+                    "title": "Create Product",
+                    "href": "/ecommerce/create-product/"
+                  },
+                  {
+                    "title": "Edit Product",
+                    "href": "/ecommerce/edit-product/"
+                  }
+                ]
+              },
+              { "title": "Cart", "href": "/ecommerce/cart/" },
+              { "title": "Checkout", "href": "/ecommerce/checkout/" },
+              { "title": "Orders", "href": "/ecommerce/orders/" },
+              {
+                "title": "Order Details",
+                "href": "/ecommerce/orders/details/"
+              },
+              { "title": "Create Order", "href": "/ecommerce/orders/create/" },
+              {
+                "title": "Order Tracking",
+                "href": "/ecommerce/orders/tracking/"
+              },
+              { "title": "Customers", "href": "/ecommerce/customers/" },
+              {
+                "title": "Customer Details",
+                "href": "/ecommerce/customers/details/"
+              },
+              { "title": "Categories", "href": "/ecommerce/categories/" },
+              { "title": "Sellers", "href": "/ecommerce/sellers/" },
+              {
+                "title": "Seller Details",
+                "href": "/ecommerce/sellers/details/"
+              },
+              {
+                "title": "Create Seller",
+                "href": "/ecommerce/sellers/create/"
+              },
+              { "title": "Reviews", "href": "/ecommerce/reviews/" },
+              { "title": "Refunds", "href": "/ecommerce/refunds/" }
+            ]
+          },
+          {
+            "title": "CRM",
+            "icon": "handshake",
+            "submenu": [
+              { "title": "Contacts", "href": "/crm/contacts/" },
+              { "title": "Customers", "href": "/crm/customers/" },
+              { "title": "Leads", "href": "/crm/leads/" },
+              { "title": "Deals", "href": "/crm/deals/" }
+            ]
+          },
+          {
+            "title": "Project Management",
+            "icon": "description",
+            "submenu": [
+              {
+                "title": "Project Overview",
+                "href": "/project-management/project-overview/"
+              },
+              {
+                "title": "Projects List",
+                "href": "/project-management/projects-list/"
+              },
+              {
+                "title": "Create Project",
+                "href": "/project-management/create-project/"
+              },
+              { "title": "Clients", "href": "/project-management/clients/" },
+              { "title": "Teams", "href": "/project-management/teams/" },
+              {
+                "title": "Kanban Board",
+                "href": "/project-management/kanban-board/"
+              },
+              { "title": "Users", "href": "/project-management/users/" }
+            ]
+          },
+          {
+            "title": "LMS",
+            "icon": "auto_stories",
+            "submenu": [
+              { "title": "Courses List", "href": "/lms/courses/" },
+              { "title": "Course Details", "href": "/lms/courses/details/" },
+              { "title": "Lesson Preview", "href": "/lms/lesson-preview/" },
+              { "title": "Create Course", "href": "/lms/create-course/" },
+              { "title": "Edit Course", "href": "/lms/edit-course/" },
+              { "title": "Instructors", "href": "/lms/instructors/" }
+            ]
+          },
+          {
+            "title": "HelpDesk",
+            "icon": "support",
+            "submenu": [
+              { "title": "Tickets", "href": "/helpdesk/tickets/" },
+              {
+                "title": "Ticket Details",
+                "href": "/helpdesk/tickets/details/"
+              },
+              { "title": "Agents", "href": "/helpdesk/agents/" },
+              { "title": "Reports", "href": "/helpdesk/reports/" }
+            ]
+          },
+          {
+            "title": "NFT Marketplace",
+            "icon": "store",
+            "submenu": [
+              { "title": "Marketplace", "href": "/nft/marketplace/" },
+              { "title": "Explore All", "href": "/nft/explore-all/" },
+              { "title": "Live Auction", "href": "/nft/live-auction/" },
+              { "title": "NFT Details", "href": "/nft/details/" },
+              { "title": "Creators", "href": "/nft/creators/" },
+              { "title": "Creator Details", "href": "/nft/creators/details/" },
+              { "title": "Wallet Connect", "href": "/nft/wallet-connect/" }
+            ]
+          },
+          {
+            "title": "Real Estate",
+            "icon": "real_estate_agent",
+            "submenu": [
+              {
+                "title": "Property List",
+                "href": "/real-estate/property-list/"
+              },
+              {
+                "title": "Property Details",
+                "href": "/real-estate/property-details/"
+              },
+              { "title": "Add Property", "href": "/real-estate/add-property/" },
+              { "title": "Agents", "href": "/real-estate/agents/" },
+              {
+                "title": "Agent Details",
+                "href": "/real-estate/agents/details/"
+              },
+              { "title": "Add Agent", "href": "/real-estate/agents/add/" },
+              { "title": "Customers", "href": "/real-estate/customers/" }
+            ]
+          },
+          {
+            "title": "Finance",
+            "icon": "calculate",
+            "submenu": [
+              { "title": "Wallet", "href": "/finance/wallet/" },
+              { "title": "Transactions", "href": "/finance/transactions/" }
+            ]
+          },
+          {
+            "title": "Events",
+            "icon": "local_activity",
+            "submenu": [
+              { "title": "Events Grid", "href": "/events/" },
+              { "title": "Events List", "href": "/events/list/" },
+              { "title": "Event Details", "href": "/events/details/" },
+              {
+                "title": "Create An Event",
+                "href": "/events/create-an-event/"
+              },
+              { "title": "Edit An Event", "href": "/events/edit-an-event/" }
+            ]
+          },
+          {
+            "title": "Social",
+            "icon": "share",
+            "submenu": [
+              { "title": "Profile", "href": "/social/profile/" },
+              { "title": "Settings", "href": "/social/settings/" }
+            ]
+          },
+          {
+            "title": "Invoices",
+            "icon": "content_paste",
+            "submenu": [
+              { "title": "Invoices", "href": "/invoices/" },
+              { "title": "Invoice Details", "href": "/invoices/details/" },
+              { "title": "Create Invoice", "href": "/invoices/create/" },
+              { "title": "Edit Invoice", "href": "/invoices/edit/" }
+            ]
+          },
+          {
+            "title": "Users",
+            "icon": "person",
+            "submenu": [
+              { "title": "Team Members", "href": "/users/" },
+              { "title": "Users List", "href": "/users/users-list/" },
+              { "title": "Add User", "href": "/users/add-user/" }
+            ]
+          },
+          {
+            "title": "Profile",
+            "icon": "account_box",
+            "submenu": [
+              { "title": "User Profile", "href": "/profile/" },
+              { "title": "Teams", "href": "/profile/teams/" },
+              { "title": "Projects", "href": "/profile/projects/" }
+            ]
+          },
+          { "title": "Starter", "href": "/starter/", "icon": "star_border" }
+        ]
+      },
+      {
+        "title": "Modules",
+        "icon": "token",
+        "submenu": [
+          {
+            "title": "Icons",
+            "icon": "emoji_emotions",
+            "submenu": [
+              {
+                "title": "Material Symbols",
+                "href": "/icons/material-symbols/"
+              },
+              { "title": "RemixIcon", "href": "/icons/remixicon/" }
+            ]
+          },
+          { "title": "Tables", "href": "/tables/", "icon": "table_chart" },
+          {
+            "title": "Authentication",
+            "icon": "lock_open",
+            "submenu": [
+              { "title": "Sign In", "href": "/authentication/sign-in/" },
+              { "title": "Sign Up", "href": "/authentication/sign-up/" },
+              {
+                "title": "Forgot Password",
+                "href": "/authentication/forgot-password/"
+              },
+              {
+                "title": "Reset Password",
+                "href": "/authentication/reset-password/"
+              },
+              {
+                "title": "Confirm Email",
+                "href": "/authentication/confirm-email/"
+              },
+              {
+                "title": "Lock Screen",
+                "href": "/authentication/lock-screen/"
+              },
+              { "title": "Logout", "href": "/authentication/logout/" }
+            ]
+          },
+          {
+            "title": "Extra Pages",
+            "icon": "content_copy",
+            "submenu": [
+              { "title": "Pricing", "href": "/pricing/" },
+              { "title": "Timeline", "href": "/timeline/" },
+              { "title": "FAQ", "href": "/faq/" },
+              { "title": "Gallery", "href": "/gallery/" },
+              { "title": "Search", "href": "/search/" },
+              { "title": "Blank Page", "href": "/blank-page/" }
+            ]
+          },
+          {
+            "title": "Errors",
+            "icon": "error",
+            "submenu": [
+              { "title": "404 Error Page", "href": "/not-found/" },
+              { "title": "Internal Error", "href": "/internal-error/" }
+            ]
+          },
+          { "title": "Widgets", "href": "/widgets/", "icon": "widgets" },
+          { "title": "Maps", "href": "/maps/", "icon": "map" },
+          {
+            "title": "Notifications",
+            "href": "/notifications/",
+            "icon": "notifications"
+          },
+          { "title": "Members", "href": "/members/", "icon": "people" }
+        ]
+      },
+      {
+        "title": "Forms",
+        "icon": "forum",
+        "submenu": [
+          { "title": "Basic Elements", "href": "/forms/basic-elements/" },
+          { "title": "Advanced Elements", "href": "/forms/advanced-elements/" },
+          { "title": "Editors", "href": "/forms/editors/" },
+          { "title": "File Upload", "href": "/forms/file-uploader/" }
+        ]
+      },
+      {
+        "title": "Charts",
+        "icon": "pie_chart",
+        "submenu": [
+          { "title": "Line", "href": "/charts/line/" },
+          { "title": "Area", "href": "/charts/area/" },
+          { "title": "Column", "href": "/charts/column/" },
+          { "title": "Mixed", "href": "/charts/mixed/" },
+          { "title": "RadialBar", "href": "/charts/radialbar/" },
+          { "title": "Radar", "href": "/charts/radar/" },
+          { "title": "Pie", "href": "/charts/pie/" },
+          { "title": "Polar", "href": "/charts/polar/" },
+          { "title": "More", "href": "/charts/more/" }
+        ]
+      },
+      {
+        "title": "Others",
+        "icon": "open_run",
+        "submenu": [
+          {
+            "title": "My Profile",
+            "href": "/my-profile/",
+            "icon": "account_circle"
+          },
+          {
+            "title": "Settings",
+            "icon": "settings",
+            "submenu": [
+              { "title": "Account Settings", "href": "/settings/" },
+              {
+                "title": "Change Password",
+                "href": "/settings/change-password/"
+              },
+              { "title": "Connections", "href": "/settings/connections/" },
+              {
+                "title": "Privacy Policy",
+                "href": "/settings/privacy-policy/"
+              },
+              {
+                "title": "Terms & Conditions",
+                "href": "/settings/terms-conditions/"
+              }
+            ]
+          },
+          {
+            "title": "Multi Level Menu",
+            "icon": "unfold_more",
+            "submenu": [
+              { "title": "First", "href": "#" },
+              { "title": "Second", "href": "#" },
+              {
+                "title": "Third",
+                "badge": "3",
+                "submenu": [
+                  { "title": "Third 1", "href": "#" },
+                  {
+                    "title": "Third 2",
+                    "submenu": [{ "title": "Four 1", "href": "#" }]
+                  },
+                  { "title": "Third 3", "href": "#" }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Logout",
+            "href": "/authentication/logout",
+            "icon": "logout"
+          }
+        ]
+      }
+    ]
+  },
+
+  "testimonialsPage": {
+    "testimonialsStyle1": [
+      {
+        "id": 1,
+        "name": "Sarah Johnson",
+        "position": "Financial Manager",
+        "image": "/images/users/user6.jpg",
+        "rating": 5,
+        "comment": "Statistics is the science of using data to make decisions. This is relevant in almost all fields of work and there are many opportunities for employment."
+      },
+      {
+        "id": 2,
+        "name": "Michael Smith",
+        "position": "Software Developer",
+        "image": "/images/users/user7.jpg",
+        "rating": 4.5,
+        "comment": "Statistics is the science of using data to make decisions. This is relevant in almost all fields of work and there are many opportunities for employment."
+      },
+      {
+        "id": 3,
+        "name": "Emily Brown",
+        "position": "Web Developer",
+        "image": "/images/users/user8.jpg",
+        "rating": 5,
+        "comment": "Statistics is the science of using data to make decisions. This is relevant in almost all fields of work and there are many opportunities for employment."
+      }
+    ]
+  }
+}

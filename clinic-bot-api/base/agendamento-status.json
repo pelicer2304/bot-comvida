@@ -1,0 +1,312 @@
+[
+  {
+    "codAgendamentoStatus": 0,
+    "idEmpresa": 0,
+    "descricao": "Cancelado",
+    "cor": "#CF5151",
+    "ordem": 95,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 1,
+    "idEmpresa": 0,
+    "descricao": "Aguarda atendimento",
+    "cor": "#606A8A",
+    "ordem": 30,
+    "pacienteVeio": "S",
+    "agendamentoAtivo": 1,
+    "icone": "fa fa-hourglass-end"
+  },
+  {
+    "codAgendamentoStatus": 2,
+    "idEmpresa": 0,
+    "descricao": "Confirmado",
+    "cor": "#DB9244",
+    "ordem": 20,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 1,
+    "icone": "fa fa-check-square"
+  },
+  {
+    "codAgendamentoStatus": 3,
+    "idEmpresa": 0,
+    "descricao": "Não chegou",
+    "cor": "#CF5151",
+    "ordem": 10,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 1,
+    "icone": "fa fa-ban"
+  },
+  {
+    "codAgendamentoStatus": 4,
+    "idEmpresa": 0,
+    "descricao": "Em atendimento",
+    "cor": "#0000FF",
+    "ordem": 50,
+    "pacienteVeio": "S",
+    "agendamentoAtivo": 1,
+    "icone": "fa fa-pencil-square-o"
+  },
+  {
+    "codAgendamentoStatus": 5,
+    "idEmpresa": 0,
+    "descricao": "Triagem",
+    "cor": "#FFCC00",
+    "ordem": 40,
+    "pacienteVeio": "S",
+    "agendamentoAtivo": 1,
+    "icone": "fa fa-user-md"
+  },
+  {
+    "codAgendamentoStatus": 9,
+    "idEmpresa": 0,
+    "descricao": "Atendido",
+    "cor": "#57A148",
+    "ordem": 60,
+    "pacienteVeio": "S",
+    "agendamentoAtivo": 1,
+    "icone": "fa fa-check-square-o"
+  },
+  {
+    "codAgendamentoStatus": 10,
+    "idEmpresa": 0,
+    "descricao": "Atendimento ao convênio está suspenso",
+    "cor": "#AAAAA",
+    "ordem": 50,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 11,
+    "idEmpresa": 0,
+    "descricao": "Convênio não atendido",
+    "cor": "#AAAAA",
+    "ordem": 60,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 12,
+    "idEmpresa": 0,
+    "descricao": "Dados do paciente incompletos ou incorretos",
+    "cor": "#AAAAA",
+    "ordem": 70,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 13,
+    "idEmpresa": 0,
+    "descricao": "Exame agendado incorretamente",
+    "cor": "#AAAAA",
+    "ordem": 80,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 14,
+    "idEmpresa": 0,
+    "descricao": "Horário já ocupado ou agenda lotada",
+    "cor": "#AAAAA",
+    "ordem": 90,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 15,
+    "idEmpresa": 0,
+    "descricao": "Motivo do agendamento não atendido",
+    "cor": "#AAAAA",
+    "ordem": 100,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 16,
+    "idEmpresa": 0,
+    "descricao": "Motivo do agendamento sem cobertura pelo plano",
+    "cor": "#AAAAA",
+    "ordem": 110,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 17,
+    "idEmpresa": 0,
+    "descricao": "Múltiplos agendamentos para o mesmo paciente",
+    "cor": "#AAAAA",
+    "ordem": 120,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 18,
+    "idEmpresa": 0,
+    "descricao": "Numero do cartão do convênio não informado ou incorreto",
+    "cor": "#AAAAA",
+    "ordem": 130,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 19,
+    "idEmpresa": 0,
+    "descricao": "Não conseguimos contato com o paciente",
+    "cor": "#AAAAA",
+    "ordem": 140,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 20,
+    "idEmpresa": 0,
+    "descricao": "Não haverá atendimento nessa data (feriado, congresso, etc)",
+    "cor": "#AAAAA",
+    "ordem": 150,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 21,
+    "idEmpresa": 0,
+    "descricao": "Paciente não compareceu a outros agendamentos",
+    "cor": "#AAAAA",
+    "ordem": 160,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 22,
+    "idEmpresa": 0,
+    "descricao": "Paciente não tem encaminhamento para a especialidade",
+    "cor": "#AAAAA",
+    "ordem": 170,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 23,
+    "idEmpresa": 0,
+    "descricao": "Paciente solicitou o cancelamento",
+    "cor": "#AAAAA",
+    "ordem": 180,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 24,
+    "idEmpresa": 0,
+    "descricao": "Período de férias",
+    "cor": "#AAAAA",
+    "ordem": 190,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 25,
+    "idEmpresa": 0,
+    "descricao": "Plano não atendido",
+    "cor": "#AAAAA",
+    "ordem": 200,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 26,
+    "idEmpresa": 0,
+    "descricao": "Prestador afastado por motivo de saúde",
+    "cor": "#AAAAA",
+    "ordem": 210,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 27,
+    "idEmpresa": 0,
+    "descricao": "Prestador não atende no dia / horário escolhido",
+    "cor": "#AAAAA",
+    "ordem": 220,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 28,
+    "idEmpresa": 0,
+    "descricao": "Prestador não atende pacientes dessa idade",
+    "cor": "#AAAAA",
+    "ordem": 230,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 29,
+    "idEmpresa": 0,
+    "descricao": "Prestador não trabalha mais conosco",
+    "cor": "#AAAAA",
+    "ordem": 240,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 30,
+    "idEmpresa": 0,
+    "descricao": "Prestador terá um procedimento nesse horário",
+    "cor": "#AAAAA",
+    "ordem": 250,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 31,
+    "idEmpresa": 0,
+    "descricao": "Prestador teve um imprevisto",
+    "cor": "#AAAAA",
+    "ordem": 260,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 32,
+    "idEmpresa": 0,
+    "descricao": "Falecimento do paciente",
+    "cor": "#AAAAA",
+    "ordem": 270,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  },
+  {
+    "codAgendamentoStatus": 33,
+    "idEmpresa": 0,
+    "descricao": "Paciente Suspenso/Debilitado",
+    "cor": "#AAA",
+    "ordem": 280,
+    "pacienteVeio": "N",
+    "agendamentoAtivo": 0,
+    "icone": null
+  }
+]

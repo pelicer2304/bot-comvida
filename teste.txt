@@ -1,0 +1,4 @@
+Agora vamos estruturar certinho, antes vamos fazer um .md de um fluxo conversacional.
+
+
+Porque assim, atualmente está muito robotizado, ele manda opções e etc e eu gostaria de fazer uma análise com oque temos hoje pra gente conseguir

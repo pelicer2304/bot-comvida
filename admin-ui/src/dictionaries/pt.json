@@ -1,0 +1,79 @@
+{
+  "leftSideMenu": [
+    {
+      "type": "sub-title",
+      "title": "PRINCIPAL"
+    },
+    {
+      "type": "link",
+      "title": "Dashboard",
+      "icon": "dashboard",
+      "href": "/dashboard/"
+    },
+    {
+      "type": "sub-title",
+      "title": "BOT"
+    },
+    {
+      "type": "link",
+      "title": "Sessões Ativas",
+      "icon": "forum",
+      "href": "/sessoes/"
+    },
+    {
+      "type": "link",
+      "title": "Agendamentos",
+      "icon": "calendar_month",
+      "href": "/agendamentos/"
+    },
+    {
+      "type": "sub-title",
+      "title": "CLÍNICA"
+    },
+    {
+      "type": "link",
+      "title": "Pacientes",
+      "icon": "person_search",
+      "href": "/pacientes/"
+    },
+    {
+      "type": "link",
+      "title": "Médicos",
+      "icon": "stethoscope",
+      "href": "/medicos/"
+    },
+    {
+      "type": "link",
+      "title": "Convênios",
+      "icon": "health_and_safety",
+      "href": "/convenios/"
+    },
+    {
+      "type": "sub-title",
+      "title": "CONFIGURAÇÕES"
+    },
+    {
+      "type": "link",
+      "title": "Configurar Bot",
+      "icon": "smart_toy",
+      "href": "/config/"
+    },
+    {
+      "type": "link",
+      "title": "Sair",
+      "icon": "logout",
+      "href": "/authentication/sign-in/"
+    }
+  ],
+  "topHeaderNavbar": {
+    "topMenuApps": [],
+    "topMenuNotifications": {
+      "title": "Notificações",
+      "clearBtn": "Limpar tudo",
+      "seeAllBtn": "Ver todas",
+      "emptyNotifications": "Nenhuma notificação",
+      "notifications": []
+    },
+    "horizontalNavbar": []
+  }
+}

@@ -1,0 +1,15 @@
+.shape {
+     top: 0;
+     right: 0;
+     position: absolute;
+}
+  
+/* RTL Style */
+[dir="ar"] .shape, [lang="ar"] .shape {
+     top: 0;
+     right: auto; 
+     left: 0;
+     transform: scaleX(-1);
+}
+ 
+ 

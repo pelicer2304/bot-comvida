@@ -1,0 +1,8 @@
+Fluxo do BOT
+Pedir nome, data de nascimento e cpf depois cpf se existir na base pedir pra confirmar 
+Inicialmente pedir o nome, cpf e data de nascimento
+Qual convenio e plano a pessoa tem? não tenho, tenho particular, a IA nunca vai passar valor, se a pessoa
+perguntar e insistir passar para humano.
+Qual procedimento ou especialidade que o paciente vai passar
+Verificar se aquele conveni/plano atende aquele procedimento e as regras. 
+

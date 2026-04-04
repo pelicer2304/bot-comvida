@@ -1,0 +1,52 @@
+[
+  {
+    "codSala": -2,
+    "nomeSala": "Agenda Virtual",
+    "ativo": "S",
+    "horaInicioManha": "01:00:00",
+    "horaFimManha": "12:00:00",
+    "intervaloAtendimento": 30,
+    "horaInicioTarde": "12:00:00",
+    "horaFimTarde": "23:59:00"
+  },
+  {
+    "codSala": -1,
+    "nomeSala": "Agenda Cirurgia",
+    "ativo": "S",
+    "horaInicioManha": "07:00:00",
+    "horaFimManha": "12:00:00",
+    "intervaloAtendimento": 30,
+    "horaInicioTarde": "12:00:00",
+    "horaFimTarde": "20:00:00"
+  },
+  {
+    "codSala": 0,
+    "nomeSala": "Sala Padrão",
+    "ativo": "S",
+    "horaInicioManha": "07:00:00",
+    "horaFimManha": "12:00:00",
+    "intervaloAtendimento": 30,
+    "horaInicioTarde": "12:00:00",
+    "horaFimTarde": "20:00:00"
+  },
+  {
+    "codSala": 1330,
+    "nomeSala": "Sala Padrão",
+    "ativo": "S",
+    "horaInicioManha": "07:00:00",
+    "horaFimManha": "12:00:00",
+    "intervaloAtendimento": 30,
+    "horaInicioTarde": "13:00:00",
+    "horaFimTarde": "18:00:00"
+  },
+  {
+    "codSala": 1331,
+    "nomeSala": "Sala Padrão",
+    "ativo": "S",
+    "horaInicioManha": "07:00:00",
+    "horaFimManha": "12:00:00",
+    "intervaloAtendimento": 30,
+    "horaInicioTarde": "13:00:00",
+    "horaFimTarde": "18:00:00"
+  }
+]

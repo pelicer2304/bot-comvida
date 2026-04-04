@@ -1,0 +1,43 @@
+# Dependências
+node_modules/
+
+# Variáveis de ambiente
+.env
+.env.local
+.env*.local
+
+# Next.js
+.next/
+out/
+
+# Logs e sessões geradas
+logs/
+sessions/
+chat-ui/logs/
+chat-ui/sessions/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+
+# TypeScript
+*.tsbuildinfo
+
+# Package locks (opcional — descomente se quiser versionar)
+# package-lock.json
+
+# IDE
+.idea/
+.vscode/
+
+# PDF e HTML de docs externos
+*.pdf
+API*.html
+
+# Arquivos grandes do template (gifs, videos)
+*.mp4
+*.gif

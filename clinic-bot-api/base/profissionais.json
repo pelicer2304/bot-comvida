@@ -1,0 +1,474 @@
+[
+  {
+    "idUsuario": 17070531,
+    "nome": "ACERT DIAGNOSTICOS",
+    "especialidades": []
+  },
+  {
+    "idUsuario": 42578621,
+    "nome": "ADALBERTO PEREIRA MARTINS",
+    "especialidades": [
+      "Neurologista"
+    ]
+  },
+  {
+    "idUsuario": 24219292,
+    "nome": "ADALBERTO PEREIRA MARTINS",
+    "especialidades": [
+      "Neurorradiologia"
+    ]
+  },
+  {
+    "idUsuario": 42282840,
+    "nome": "ADILSON COSTA RODRIGUES JUNIOR",
+    "especialidades": [
+      "Gastroenterologia"
+    ]
+  },
+  {
+    "idUsuario": 26782081,
+    "nome": "ALEXANDRE MAGALHÃES PARREIRA",
+    "especialidades": [
+      "Cardiologia"
+    ]
+  },
+  {
+    "idUsuario": 21524674,
+    "nome": "ALEXANDRE NICASTRO FILHO",
+    "especialidades": [
+      "Angiologia",
+      "Cirurgia Vascular"
+    ]
+  },
+  {
+    "idUsuario": 21151898,
+    "nome": "ALLAIN PONTE CHAVEZ",
+    "especialidades": [
+      "Oftalmologia"
+    ]
+  },
+  {
+    "idUsuario": 49894272,
+    "nome": "AMYR BATISTELLA CHAVES",
+    "especialidades": [
+      "Clínica Médica"
+    ]
+  },
+  {
+    "idUsuario": 52764105,
+    "nome": "ANA CASSIA XAVIER SALES LIMA",
+    "especialidades": [
+      "Psicologia"
+    ]
+  },
+  {
+    "idUsuario": 2870966,
+    "nome": "CANDIDO FERREIRA DA FONSECA",
+    "especialidades": [
+      "Angiologia",
+      "Cirurgia Vascular"
+    ]
+  },
+  {
+    "idUsuario": 19584548,
+    "nome": "CARLOS MAURICIO MACCARE",
+    "especialidades": [
+      "Hematologia e Hemoterapia",
+      "Reumatologia"
+    ]
+  },
+  {
+    "idUsuario": 1504773,
+    "nome": "CRISTIANE ILIAS MOLINA",
+    "especialidades": [
+      "Ginecologia"
+    ]
+  },
+  {
+    "idUsuario": 50966925,
+    "nome": "DANIEL NASCIMENTO RADAELLI",
+    "especialidades": [
+      "Médico ortopedista"
+    ]
+  },
+  {
+    "idUsuario": 47345862,
+    "nome": "DARIO JOSE TROMBINI",
+    "especialidades": [
+      "Otorrinolaringologia"
+    ]
+  },
+  {
+    "idUsuario": 35913906,
+    "nome": "DECIO MASCARENHAS HIRAYAMA",
+    "especialidades": [
+      "Clínica Médica",
+      "Geriatria"
+    ]
+  },
+  {
+    "idUsuario": 51785960,
+    "nome": "DIOGENES RIVERA PORCEL",
+    "especialidades": [
+      "Ecocardiografista"
+    ]
+  },
+  {
+    "idUsuario": 46891331,
+    "nome": "EDMILSON SILVA LEITE",
+    "especialidades": [
+      "Urologia"
+    ]
+  },
+  {
+    "idUsuario": 4695969,
+    "nome": "EDSON NOBAYASHI",
+    "especialidades": [
+      "Ortopedia e Traumatologia"
+    ]
+  },
+  {
+    "idUsuario": 53652477,
+    "nome": "ELETROENCEFALOGRAMA",
+    "especialidades": []
+  },
+  {
+    "idUsuario": 1504732,
+    "nome": "ELISANGELA LEMOS DA COSTA ROCHA",
+    "especialidades": [
+      "Pediatria",
+      "Dermatologia"
+    ]
+  },
+  {
+    "idUsuario": 1504767,
+    "nome": "EMERSON SAMOGIM",
+    "especialidades": [
+      "Endocrinologia"
+    ]
+  },
+  {
+    "idUsuario": 16308743,
+    "nome": "ENDOSCOPIA",
+    "especialidades": [
+      "Endoscopia"
+    ]
+  },
+  {
+    "idUsuario": 55357279,
+    "nome": "ENFERMAGEM",
+    "especialidades": []
+  },
+  {
+    "idUsuario": 1504766,
+    "nome": "EUCLYDES DIAS BUCHLER",
+    "especialidades": [
+      "Endocrinologia"
+    ]
+  },
+  {
+    "idUsuario": 50241788,
+    "nome": "EUFROSINO VERAS FILHO",
+    "especialidades": [
+      "Ecocardiografista"
+    ]
+  },
+  {
+    "idUsuario": 55955512,
+    "nome": "EUZALINA SUELLEN DOMINGUES PEREIRA",
+    "especialidades": [
+      "CLÍNICO GERAL"
+    ]
+  },
+  {
+    "idUsuario": 23321363,
+    "nome": "EXTERNO PARTICULAR",
+    "especialidades": [
+      "Clínica Médica"
+    ]
+  },
+  {
+    "idUsuario": 51167474,
+    "nome": "GABRIELA FUSTER BARBOSA",
+    "especialidades": [
+      "Ginecologia"
+    ]
+  },
+  {
+    "idUsuario": 51145994,
+    "nome": "GABRIELLE HANELLORE STADUTO CEVALLOS",
+    "especialidades": [
+      "Nutrição"
+    ]
+  },
+  {
+    "idUsuario": 1504696,
+    "nome": "GALO MAURICIO CEVALLOS GALINDO",
+    "especialidades": [
+      "Endocrinologia"
+    ]
+  },
+  {
+    "idUsuario": 48153674,
+    "nome": "GRAZIELE ALVES CAVALCANTE",
+    "especialidades": [
+      "Optometrista"
+    ]
+  },
+  {
+    "idUsuario": 49695036,
+    "nome": "HELI DE MOURA BEZERRA CINZAS",
+    "especialidades": [
+      "Psicologia"
+    ]
+  },
+  {
+    "idUsuario": 10823530,
+    "nome": "IGOR GUILHERME DE PAIVA FORTE",
+    "especialidades": [
+      "Ortopedia e Traumatologia"
+    ]
+  },
+  {
+    "idUsuario": 53593951,
+    "nome": "JAQUELINE APARECIDA VIEIRA FREITAS",
+    "especialidades": [
+      "Psiquiatria"
+    ]
+  },
+  {
+    "idUsuario": 53297218,
+    "nome": "JAQUELINE GOMES CASTRO CEBALHO",
+    "especialidades": [
+      "Reumatologia"
+    ]
+  },
+  {
+    "idUsuario": 55669204,
+    "nome": "JOSE ANTONIO CALDERON HIGUERAS",
+    "especialidades": [
+      "Urologia"
+    ]
+  },
+  {
+    "idUsuario": 7120054,
+    "nome": "JOSE CALDERON HIGUEIRAS",
+    "especialidades": [
+      "Urologia"
+    ]
+  },
+  {
+    "idUsuario": 50833779,
+    "nome": "JOSE EDUARDO CESAR DE FREITAS",
+    "especialidades": [
+      "Cardiologia"
+    ]
+  },
+  {
+    "idUsuario": 1504717,
+    "nome": "JOSE PEDRO DE OLIVEIRA COSTA",
+    "especialidades": [
+      "Ultrassonografia"
+    ]
+  },
+  {
+    "idUsuario": 47991408,
+    "nome": "JULIA CAMPOS KAHAKURA",
+    "especialidades": [
+      "Pediatria"
+    ]
+  },
+  {
+    "idUsuario": 52551171,
+    "nome": "JULIA DOS REIS TOLEDO",
+    "especialidades": [
+      "Dermatologia"
+    ]
+  },
+  {
+    "idUsuario": 55882107,
+    "nome": "JULIA FERREIRA BERNARDES",
+    "especialidades": [
+      "Clínica Médica"
+    ]
+  },
+  {
+    "idUsuario": 5063551,
+    "nome": "KAREN CHISTHINA MARTINS ROVIDA",
+    "especialidades": [
+      "Nutricionista"
+    ]
+  },
+  {
+    "idUsuario": 55652375,
+    "nome": "LARISSA CALDERARO DE OLIVEIRA",
+    "especialidades": [
+      "Ginecologia"
+    ]
+  },
+  {
+    "idUsuario": 53652332,
+    "nome": "LEONARDO DA ROCHA CARDOSO",
+    "especialidades": []
+  },
+  {
+    "idUsuario": 42027920,
+    "nome": "LETIELLY BOZETTI DAVILA",
+    "especialidades": [
+      "Dermatologia"
+    ]
+  },
+  {
+    "idUsuario": 54364245,
+    "nome": "LISANDRA DELGADO GONZALEZ",
+    "especialidades": [
+      "Ginecologia"
+    ]
+  },
+  {
+    "idUsuario": 8016557,
+    "nome": "LUCIANO DELLA FLORA",
+    "especialidades": [
+      "Mastologia"
+    ]
+  },
+  {
+    "idUsuario": 49555687,
+    "nome": "LUCILA AYUMI MIYAKE",
+    "especialidades": [
+      "Ginecologia"
+    ]
+  },
+  {
+    "idUsuario": 50267062,
+    "nome": "MAPA 24HORAS",
+    "especialidades": [
+      "Cardiologia",
+      "exame"
+    ]
+  },
+  {
+    "idUsuario": 6361509,
+    "nome": "MAPA/MRPA",
+    "especialidades": [
+      "Cardiologia"
+    ]
+  },
+  {
+    "idUsuario": 46898522,
+    "nome": "MARCIO MARTINES SILVESTRE",
+    "especialidades": [
+      "Clínica Médica",
+      "Gastroenterologia"
+    ]
+  },
+  {
+    "idUsuario": 53652347,
+    "nome": "MARIA EDUARDA SOARES LIMA",
+    "especialidades": []
+  },
+  {
+    "idUsuario": 53515333,
+    "nome": "MEDICINA OCUPACIONAL",
+    "especialidades": []
+  },
+  {
+    "idUsuario": 50086650,
+    "nome": "MEDICO COMVIDA TESTE",
+    "especialidades": [
+      "Dermatologia"
+    ]
+  },
+  {
+    "idUsuario": 50420730,
+    "nome": "OSWALDO BARBI JUNIOR",
+    "especialidades": [
+      "Urologia"
+    ]
+  },
+  {
+    "idUsuario": 21934820,
+    "nome": "OSWALDO BARBI JUNIOR",
+    "especialidades": [
+      "Urologia"
+    ]
+  },
+  {
+    "idUsuario": 55049619,
+    "nome": "PAULA ABDUCH",
+    "especialidades": [
+      "Dermatologia"
+    ]
+  },
+  {
+    "idUsuario": 55566873,
+    "nome": "PAULO FERNANDO SOUZA NETO",
+    "especialidades": [
+      "Ortopedia e Traumatologia"
+    ]
+  },
+  {
+    "idUsuario": 1504733,
+    "nome": "PAULO RICARDO ABEN ATHAR DE ALCANTARA",
+    "especialidades": [
+      "Neurologista"
+    ]
+  },
+  {
+    "idUsuario": 48750180,
+    "nome": "POLISSONOGRAFIA",
+    "especialidades": [
+      "Outra",
+      "Ultrassonografia"
+    ]
+  },
+  {
+    "idUsuario": 53829361,
+    "nome": "RAFAEL MARTINS CARDOSO",
+    "especialidades": [
+      "Psiquiatria"
+    ]
+  },
+  {
+    "idUsuario": 1504742,
+    "nome": "RONALDO TALARICO",
+    "especialidades": [
+      "Reumatologia"
+    ]
+  },
+  {
+    "idUsuario": 24041336,
+    "nome": "ROSANA RIBEIRO",
+    "especialidades": [
+      "Otorrinolaringologia"
+    ]
+  },
+  {
+    "idUsuario": 52584902,
+    "nome": "SERGIO SANI",
+    "especialidades": [
+      "Cardiologia"
+    ]
+  },
+  {
+    "idUsuario": 49863483,
+    "nome": "THAIS MARQUES SASTRE",
+    "especialidades": [
+      "Dermatologia"
+    ]
+  },
+  {
+    "idUsuario": 50035207,
+    "nome": "THIAGO GRIGORIO SALES ARAUJO",
+    "especialidades": [
+      "Dermatologia"
+    ]
+  },
+  {
+    "idUsuario": 49685142,
+    "nome": "VINICIUS GARCEZ RODRIGUES",
+    "especialidades": [
+      "Dermatologia"
+    ]
+  }
+]
