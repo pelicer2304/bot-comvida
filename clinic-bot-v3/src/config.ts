@@ -12,8 +12,8 @@ export const config = {
     codEmpresa: Number(process.env.COD_EMPRESA ?? 155),
   },
   zapi: {
-    instanceId: process.env.ZAPI_INSTANCE_ID ?? '',
-    token: process.env.ZAPI_TOKEN ?? '',
+    instanceId: process.env.ZAPI_INSTANCE_ID ?? '3F144746672651B23B02E29123FA23F4',
+    token: process.env.ZAPI_TOKEN ?? '9445BFCB31B3D5433BA3C73A',
     clientToken: process.env.ZAPI_CLIENT_TOKEN ?? '',
   },
   debounceMs: Number(process.env.DEBOUNCE_MS ?? 2000),

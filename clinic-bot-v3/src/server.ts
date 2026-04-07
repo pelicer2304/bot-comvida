@@ -4,6 +4,7 @@ import { config } from './config';
 import { setupDb } from './state/store';
 import { listSessions } from './state/store';
 import { processMessage } from './bot/engine';
+import { zapiRouter } from './zapi/webhook';
 
 const app = express();
 app.use(express.json());
@@ -42,6 +43,9 @@ app.get('/sessions', async (_req, res) => {
     res.status(500).json({ error: (e as Error).message });
   }
 });
+
+// Webhook Z-API
+app.use('/webhook/zapi', zapiRouter);
 
 async function start() {
   await setupDb();
