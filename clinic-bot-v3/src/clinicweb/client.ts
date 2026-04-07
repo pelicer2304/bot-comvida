@@ -45,8 +45,8 @@ async function call<T = unknown>(method: string, path: string, body?: unknown, a
   let json: Record<string, unknown>;
   try { json = JSON.parse(text); } catch { json = { raw: text }; }
 
-  if (r.status >= 500 && attempt <= 3) {
-    await new Promise(res => setTimeout(res, attempt * 1000));
+  if (r.status >= 500 && attempt < 2) {
+    await new Promise(res => setTimeout(res, 1000));
     return call(method, path, body, attempt + 1, timeoutMs);
   }
 
@@ -94,11 +94,15 @@ export interface HorarioLivre {
 export const cw = {
   async buscarPacientes(cpf: string): Promise<Paciente[]> {
     if (!cpf || cpf.length < 3) throw new Error('CPF deve ter ao menos 3 caracteres');
-    return call('GET', `/pacientes?codEmpresa=${COD_EMPRESA}&query=${encodeURIComponent(cpf)}`, null, 1, 25000);
+    console.log(`[cw] buscarPacientes: ${cpf}`);
+    const result = await call<Paciente[]>('GET', `/pacientes?codEmpresa=${COD_EMPRESA}&query=${encodeURIComponent(cpf)}`, null, 1, 10000);
+    console.log(`[cw] buscarPacientes: ${Array.isArray(result) ? result.length : 0} resultados`);
+    return result;
   },
 
   async criarPaciente(args: { nomeCompleto: string; cpf: string; dataNascimento: string; sexo: 'M' | 'F' }): Promise<Paciente> {
     assertDate(args.dataNascimento, 'dataNascimento');
+    console.log(`[cw] criarPaciente: ${args.nomeCompleto}`);
     return call('POST', '/pacientes', { codEmpresa: COD_EMPRESA, ...args, sexo: args.sexo.toUpperCase() });
   },
 

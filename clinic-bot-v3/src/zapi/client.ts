@@ -22,44 +22,41 @@ async function post(endpoint: string, body: Record<string, unknown>) {
   return res.json();
 }
 
-export async function sendText(phone: string, message: string) {
+async function sendText(phone: string, message: string) {
   return post('send-text', { phone, message });
 }
 
-export async function sendButtons(phone: string, message: string, btns: { id: string; label: string }[]) {
-  return post('send-button-list', {
-    phone,
-    message,
-    buttonList: { buttons: btns },
-  });
+// Converte botões em texto numerado
+function buttonsToText(text: string, buttons: { id: string; label: string }[]): string {
+  const nums = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
+  const lines = buttons.map((b, i) => `${nums[i] || (i + 1) + '.'} ${b.label}`);
+  return `${text}\n\n${lines.join('\n')}`;
 }
 
-export async function sendOptionList(
-  phone: string,
-  message: string,
-  title: string,
-  buttonLabel: string,
-  options: { id: string; title: string; description?: string }[]
-) {
-  return post('send-option-list', {
-    phone,
-    message,
-    optionList: { title, buttonLabel, options },
+// Converte lista em texto numerado
+function listToText(text: string, sections: { title: string; rows: { id: string; title: string; description?: string }[] }[]): string {
+  const rows = sections.flatMap(s => s.rows);
+  const lines = rows.map((r, i) => {
+    const num = `${i + 1}.`;
+    return r.description ? `${num} *${r.title}* — ${r.description}` : `${num} ${r.title}`;
   });
+  return `${text}\n\n${lines.join('\n')}\n\n_Responda com o número da opção._`;
 }
 
-// Mapeia BotResponse[] → chamadas Z-API
+// Mapeia BotResponse[] → mensagens de texto via Z-API
 export async function sendResponses(phone: string, responses: BotResponse[]) {
   for (const r of responses) {
     try {
+      let msg = '';
       if (r.type === 'text' && r.text) {
-        await sendText(phone, r.text);
+        msg = r.text;
       } else if (r.type === 'buttons' && r.buttons.length) {
-        await sendButtons(phone, r.text || '⠀', r.buttons);
+        msg = buttonsToText(r.text || '', r.buttons);
       } else if (r.type === 'list') {
-        const title = r.sections[0]?.title || 'Opções';
-        const options = r.sections.flatMap(s => s.rows);
-        await sendOptionList(phone, r.text || '⠀', title, r.buttonLabel, options);
+        msg = listToText(r.text || '', r.sections);
+      }
+      if (msg.trim()) {
+        await sendText(phone, msg);
       }
     } catch (e) {
       logError('zapi', 'sendResponses', e);
