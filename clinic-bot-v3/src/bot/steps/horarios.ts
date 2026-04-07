@@ -3,7 +3,7 @@ import { text, buttons, list, MSG } from '../messages';
 import { cw, HorarioLivre } from '../../clinicweb/client';
 import { logError } from '../../logger';
 
-const COD_PROCEDIMENTO = 241681;
+const COD_PROCEDIMENTO = 13433;
 const DIAS = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
 
 interface HorarioComProf extends HorarioLivre { idProfissional?: number; }
@@ -16,11 +16,30 @@ function formatHorario(h: HorarioLivre): string {
 
 async function buscarHorarios(ids: number[], dias: number): Promise<HorarioComProf[]> {
   const todos: HorarioComProf[] = [];
-  for (const id of ids) {
-    try {
-      const raw = await cw.proximosHorariosLivres(id, dias);
-      if (Array.isArray(raw)) todos.push(...raw.map(h => ({ ...h, idProfissional: id })));
-    } catch { /* sem agenda */ }
+  const results = await Promise.allSettled(
+    ids.map(async (id) => {
+      try {
+        // Primeiro verifica se tem blocos (rápido) — se não tem, pula
+        const blocos = await Promise.race([
+          cw.blocosProfissional(id),
+          new Promise<never>((_, reject) => setTimeout(() => reject(new Error('timeout')), 8000)),
+        ]);
+        const lista = Array.isArray(blocos) ? blocos : [];
+        if (!lista.length) return [];
+
+        const raw = await Promise.race([
+          cw.proximosHorariosLivres(id, dias),
+          new Promise<HorarioLivre[]>((_, reject) => setTimeout(() => reject(new Error('timeout')), 20000)),
+        ]);
+        if (Array.isArray(raw)) return raw.map(h => ({ ...h, idProfissional: id }));
+      } catch (e) {
+        logError('horarios', `prof_${id}`, e);
+      }
+      return [];
+    })
+  );
+  for (const r of results) {
+    if (r.status === 'fulfilled') todos.push(...r.value);
   }
   return todos.sort((a, b) => `${a.data}${a.hora}`.localeCompare(`${b.data}${b.hora}`));
 }
@@ -32,8 +51,13 @@ export const horariosStep: StepHandler = async (session, input) => {
   const ids = especialidade.idsProfissionais ?? [especialidade.idProfissional];
   const page = (session.tempData?.page as number) ?? 0;
 
+  // Aguardando clique no botão "Buscar horários"
+  if (subStep === 'aguardando_busca') {
+    // Qualquer input dispara a busca
+  }
+
   // Primeira vez ou "ver mais"
-  if (!subStep || subStep === 'buscar' || input === 'horarios_mais') {
+  if (!subStep || subStep === 'buscar' || subStep === 'aguardando_busca' || input === 'horarios_mais') {
     try {
       let horarios = await buscarHorarios(ids, 7);
       if (!horarios.length) horarios = await buscarHorarios(ids, 15);

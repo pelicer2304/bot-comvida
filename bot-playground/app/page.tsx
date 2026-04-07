@@ -13,6 +13,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [sessions, setSessions] = useState<{ phone: string; step: string; updatedAt: string }[]>([]);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const fetchSessions = useCallback(async () => {
     try {
@@ -22,7 +23,10 @@ export default function Home() {
   }, []);
 
   useEffect(() => { fetchSessions(); }, [fetchSessions]);
-  useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [messages, loading]);
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    inputRef.current?.focus();
+  }, [messages, loading]);
 
   async function send(text: string, buttonId?: string) {
     if (loading) return;
@@ -49,6 +53,7 @@ export default function Home() {
       setMessages(prev => [...prev, { role: 'bot', content: '❌ Erro ao conectar com o bot.', ts: new Date().toISOString() }]);
     } finally {
       setLoading(false);
+      setTimeout(() => inputRef.current?.focus(), 100);
     }
   }
 
@@ -132,12 +137,14 @@ export default function Home() {
 
         <div className="bg-[#202c33] px-4 py-3 flex items-center gap-3">
           <input
+            ref={inputRef}
             type="text"
             value={input}
             onChange={e => setInput(e.target.value)}
-            onKeyDown={e => e.key === 'Enter' && !e.shiftKey && send(input)}
+            onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(input); } }}
             placeholder="Digite uma mensagem"
             disabled={loading}
+            autoFocus
             className="flex-1 bg-[#2a3942] text-[#e9edef] placeholder-[#8696a0] rounded-lg px-4 py-2.5 outline-none text-sm disabled:opacity-50"
           />
           <button

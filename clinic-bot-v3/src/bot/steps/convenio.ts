@@ -1,30 +1,38 @@
 import Fuse from 'fuse.js';
-import { StepHandler } from '../../state/types';
+import { StepHandler, SessionState } from '../../state/types';
 import { text, buttons, list, MSG } from '../messages';
 import { matchConvenio } from '../../base/convenio-matcher';
+import { buildEspecialidadeList } from './helpers';
 
 const PLANOS_LISTA_MAX = 10;
+
+function confirmAndShowEsp(msg: string, stateUpdate: Partial<SessionState>) {
+  return {
+    responses: [text(msg), buildEspecialidadeList()],
+    stateUpdate: { ...stateUpdate, step: 'especialidade' as const, subStep: 'aguardando_selecao' },
+  };
+}
 
 export const convenioStep: StepHandler = async (session, input) => {
   const { subStep } = session;
 
   // Escolher tipo (botões)
   if (subStep === 'escolher_tipo') {
-    if (input === 'convenio_particular' || /particular/i.test(input)) {
-      return {
-        responses: [text(MSG.particularConfirmado)],
-        stateUpdate: {
-          step: 'especialidade',
-          subStep: undefined,
-          convenio: { codConvenio: -1, codPlano: -2, nome: 'Particular' },
-        },
-      };
+    if (input === 'convenio_particular' || /^particular$/i.test(input)) {
+      return confirmAndShowEsp(MSG.particularConfirmado, {
+        convenio: { codConvenio: -1, codPlano: -2, nome: 'Particular' },
+      });
     }
-    if (input === 'convenio_sim' || /sim|tenho|convênio|convenio/i.test(input)) {
+    if (input === 'convenio_sim') {
       return {
         responses: [text(MSG.convenioDigitar)],
         stateUpdate: { subStep: 'aguardando_nome' },
       };
+    }
+    // Usuário digitou texto direto (ex: "amil") — trata como nome de convênio
+    if (input && !input.startsWith('convenio_') && !/^(sim|n[aã]o)$/i.test(input)) {
+      // Redireciona pro handler de nome
+      return convenioStep({ ...session, subStep: 'aguardando_nome' }, input);
     }
     return {
       responses: [buttons('Você possui convênio médico?', [
@@ -37,16 +45,10 @@ export const convenioStep: StepHandler = async (session, input) => {
 
   // Aguardando nome do convênio
   if (subStep === 'aguardando_nome') {
-    // Checa se digitou "particular" direto
     if (/particular/i.test(input)) {
-      return {
-        responses: [text(MSG.particularConfirmado)],
-        stateUpdate: {
-          step: 'especialidade',
-          subStep: undefined,
-          convenio: { codConvenio: -1, codPlano: -2, nome: 'Particular' },
-        },
-      };
+      return confirmAndShowEsp(MSG.particularConfirmado, {
+        convenio: { codConvenio: -1, codPlano: -2, nome: 'Particular' },
+      });
     }
 
     const conv = matchConvenio(input);
@@ -60,19 +62,12 @@ export const convenioStep: StepHandler = async (session, input) => {
       };
     }
 
-    // 1 plano → confirma direto
     if (conv.planos.length === 1) {
-      return {
-        responses: [text(MSG.convenioConfirmado(conv.descricaoConvenio))],
-        stateUpdate: {
-          step: 'especialidade',
-          subStep: undefined,
-          convenio: { codConvenio: conv.codConvenio, codPlano: conv.planos[0].codPlano, nome: conv.descricaoConvenio },
-        },
-      };
+      return confirmAndShowEsp(MSG.convenioConfirmado(conv.descricaoConvenio), {
+        convenio: { codConvenio: conv.codConvenio, codPlano: conv.planos[0].codPlano, nome: conv.descricaoConvenio },
+      });
     }
 
-    // ≤10 planos → lista
     if (conv.planos.length <= PLANOS_LISTA_MAX) {
       return {
         responses: [list(
@@ -87,7 +82,6 @@ export const convenioStep: StepHandler = async (session, input) => {
       };
     }
 
-    // >10 planos → digitar
     return {
       responses: [text(MSG.convenioDigitarPlano(conv.descricaoConvenio))],
       stateUpdate: {
@@ -108,21 +102,13 @@ export const convenioStep: StepHandler = async (session, input) => {
 
     if (idx >= 0 && idx < planos.length) {
       const plano = planos[idx];
-      return {
-        responses: [text(MSG.convenioComPlano(nomeConv, plano.plano))],
-        stateUpdate: {
-          step: 'especialidade',
-          subStep: undefined,
-          convenio: { codConvenio: codConv, codPlano: plano.codPlano, nome: nomeConv },
-          tempData: undefined,
-        },
-      };
+      return confirmAndShowEsp(MSG.convenioComPlano(nomeConv, plano.plano), {
+        convenio: { codConvenio: codConv, codPlano: plano.codPlano, nome: nomeConv },
+        tempData: undefined,
+      });
     }
 
-    return {
-      responses: [text('Por favor, selecione um plano da lista.')],
-      stateUpdate: {},
-    };
+    return { responses: [text('Por favor, selecione um plano da lista.')], stateUpdate: {} };
   }
 
   // Aguardando plano por texto (fuzzy)
@@ -135,24 +121,15 @@ export const convenioStep: StepHandler = async (session, input) => {
     const result = fuse.search(input)[0]?.item;
 
     if (result) {
-      return {
-        responses: [text(MSG.convenioComPlano(nomeConv, result.plano))],
-        stateUpdate: {
-          step: 'especialidade',
-          subStep: undefined,
-          convenio: { codConvenio: codConv, codPlano: result.codPlano, nome: nomeConv },
-          tempData: undefined,
-        },
-      };
+      return confirmAndShowEsp(MSG.convenioComPlano(nomeConv, result.plano), {
+        convenio: { codConvenio: codConv, codPlano: result.codPlano, nome: nomeConv },
+        tempData: undefined,
+      });
     }
 
-    return {
-      responses: [text(MSG.convenioPlanoNaoEncontrado)],
-      stateUpdate: {},
-    };
+    return { responses: [text(MSG.convenioPlanoNaoEncontrado)], stateUpdate: {} };
   }
 
-  // Fallback — re-perguntar
   return {
     responses: [buttons('Você possui convênio médico?', [
       { id: 'convenio_sim', label: '💳 Sim, tenho convênio' },

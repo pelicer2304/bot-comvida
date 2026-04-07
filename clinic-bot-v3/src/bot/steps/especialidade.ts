@@ -1,29 +1,16 @@
 import { StepHandler } from '../../state/types';
-import { text, buttons, list, MSG } from '../messages';
+import { text, buttons, MSG } from '../messages';
 import { getProfissionais } from '../../base/loader';
 import { checkCobertura } from '../../base/cobertura-checker';
+import { buildEspecialidadeList } from './helpers';
 
 export const especialidadeStep: StepHandler = async (session, input) => {
   const { subStep } = session;
 
-  // Primeira vez — mostra lista de especialidades
+  // Primeira vez — mostra lista
   if (!subStep || subStep === 'escolher') {
-    const profissionais = getProfissionais();
-    const especialidades = [...new Set(profissionais.flatMap(p => p.especialidades))].filter(Boolean).sort();
-
-    if (!especialidades.length) {
-      return {
-        responses: [text('Não há especialidades disponíveis no momento. Vou transferir para um atendente.')],
-        stateUpdate: { step: 'escalado' },
-      };
-    }
-
     return {
-      responses: [list(
-        MSG.especialidadeEscolher,
-        'Ver especialidades',
-        [{ title: 'Especialidades', rows: especialidades.map(e => ({ id: `esp_${e}`, title: e })) }]
-      )],
+      responses: [buildEspecialidadeList()],
       stateUpdate: { subStep: 'aguardando_selecao' },
     };
   }
@@ -40,8 +27,8 @@ export const especialidadeStep: StepHandler = async (session, input) => {
 
     if (!profsEsp.length) {
       return {
-        responses: [text(`Não encontrei profissionais para "${nomeEsp}". Por favor, selecione da lista.`)],
-        stateUpdate: { subStep: 'escolher' },
+        responses: [text(`Não encontrei profissionais para "${nomeEsp}". Por favor, selecione da lista.`), buildEspecialidadeList()],
+        stateUpdate: {},
       };
     }
 
@@ -62,10 +49,10 @@ export const especialidadeStep: StepHandler = async (session, input) => {
     }
 
     return {
-      responses: [text(MSG.especialidadeConfirmada(nomeEsp))],
+      responses: [text(MSG.especialidadeConfirmada(nomeEsp)), buttons('', [{ id: 'buscar_horarios', label: '🔍 Buscar horários' }])],
       stateUpdate: {
         step: 'horarios',
-        subStep: undefined,
+        subStep: 'aguardando_busca',
         especialidade: { nome: nomeEsp, idProfissional: profsEsp[0].idUsuario, idsProfissionais: profsEsp.map(p => p.idUsuario) },
       },
     };
@@ -77,10 +64,10 @@ export const especialidadeStep: StepHandler = async (session, input) => {
       const espNome = session.tempData?.espNome as string;
       const profsIds = session.tempData?.profsIds as number[];
       return {
-        responses: [text(MSG.especialidadeConfirmada(espNome))],
+        responses: [text(MSG.especialidadeConfirmada(espNome)), buttons('', [{ id: 'buscar_horarios', label: '🔍 Buscar horários' }])],
         stateUpdate: {
           step: 'horarios',
-          subStep: undefined,
+          subStep: 'aguardando_busca',
           convenio: { codConvenio: -1, codPlano: -2, nome: 'Particular' },
           especialidade: { nome: espNome, idProfissional: profsIds[0], idsProfissionais: profsIds },
           tempData: undefined,
@@ -89,8 +76,8 @@ export const especialidadeStep: StepHandler = async (session, input) => {
     }
     if (input === 'esp_outra') {
       return {
-        responses: [],
-        stateUpdate: { subStep: 'escolher', tempData: undefined },
+        responses: [buildEspecialidadeList()],
+        stateUpdate: { subStep: 'aguardando_selecao', tempData: undefined },
       };
     }
     return {
@@ -100,7 +87,7 @@ export const especialidadeStep: StepHandler = async (session, input) => {
   }
 
   return {
-    responses: [],
-    stateUpdate: { subStep: 'escolher' },
+    responses: [buildEspecialidadeList()],
+    stateUpdate: { subStep: 'aguardando_selecao' },
   };
 };

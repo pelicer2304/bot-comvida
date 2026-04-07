@@ -171,8 +171,16 @@ async function _processMessage(phone: string, input: string): Promise<BotRespons
   const updated = { ...session, ...result.stateUpdate, lastActivityAt: new Date().toISOString() };
   await saveSession(updated);
 
-  // Se step mudou e não tem respostas, executa o próximo step automaticamente
-  if (result.responses.length === 0 && updated.step !== session.step) {
+  // Se step mudou, auto-executa o próximo step APENAS se não tem respostas
+  // (steps que já incluem a pergunta do próximo não precisam auto-executar)
+  // Exceção: confirmacao sempre auto-executa pra mostrar resumo
+  const shouldAutoExec = updated.step !== session.step
+    && updated.step !== 'concluido'
+    && updated.step !== 'escalado'
+    && updated.step !== 'horarios'
+    && (result.responses.length === 0 || updated.step === 'confirmacao');
+
+  if (shouldAutoExec) {
     const nextHandler = stepHandlers[updated.step];
     if (nextHandler) {
       const nextResult = await nextHandler(updated, '');

@@ -17,12 +17,12 @@ export const MSG = {
 
   convenioDigitar: 'Digite o *nome do seu convênio*.',
   convenioNaoEncontrado: (nome: string) => `Não trabalhamos com o convênio "${nome}". Deseja agendar como *particular*?`,
-  convenioConfirmado: (nome: string) => `Convênio *${nome}* confirmado! ✅\n\nQual especialidade você precisa?`,
-  convenioComPlano: (conv: string, plano: string) => `Convênio *${conv}* com plano *${plano}* confirmado! ✅\n\nQual especialidade você precisa?`,
+  convenioConfirmado: (nome: string) => `Convênio *${nome}* confirmado! ✅`,
+  convenioComPlano: (conv: string, plano: string) => `Convênio *${conv}* com plano *${plano}* confirmado! ✅`,
   convenioEscolherPlano: (conv: string) => `Convênio *${conv}* identificado. Qual é o seu plano?`,
   convenioDigitarPlano: (conv: string) => `Convênio *${conv}* identificado. Digite o *nome do plano* como aparece na carteirinha.`,
   convenioPlanoNaoEncontrado: 'Não encontrei esse plano. Pode digitar o nome exato como aparece na carteirinha?',
-  particularConfirmado: 'Atendimento *particular* confirmado! ✅\n\nQual especialidade você precisa?',
+  particularConfirmado: 'Atendimento *particular* confirmado! ✅',
 
   especialidadeEscolher: 'Qual *especialidade* você precisa?',
   especialidadeNaoCoberta: (esp: string) => `Seu convênio não cobre *${esp}*. Deseja agendar como particular?`,
