@@ -43,8 +43,8 @@ export const identificacaoStep: StepHandler = async (session, input) => {
       if (paciente?.nome) {
         return {
           responses: [buttons(MSG.confirmarPaciente(paciente.nome), [
-            { id: 'confirmar_sim', label: '✅ Sim' },
-            { id: 'confirmar_nao', label: '❌ Não' },
+            { id: 'confirmar_sim', label: 'Sim' },
+            { id: 'confirmar_nao', label: 'Não' },
           ])],
           stateUpdate: {
             subStep: 'confirmar_paciente',
@@ -59,8 +59,8 @@ export const identificacaoStep: StepHandler = async (session, input) => {
     // CPF válido mas não encontrado — oferece cadastro (não conta como tentativa)
     return {
       responses: [buttons(MSG.cpfNaoEncontrado, [
-        { id: 'cadastrar_sim', label: '✅ Cadastrar' },
-        { id: 'cadastrar_nao', label: '👤 Falar com atendente' },
+        { id: 'cadastrar_sim', label: 'Cadastrar' },
+        { id: 'cadastrar_nao', label: 'Falar com atendente' },
       ])],
       stateUpdate: {
         subStep: 'aguardando_cadastro',
@@ -76,8 +76,8 @@ export const identificacaoStep: StepHandler = async (session, input) => {
       const cpf = session.tempData?.cpf as string;
       return {
         responses: [buttons(MSG.pacienteConfirmado(p.nome), [
-          { id: 'convenio_sim', label: '💳 Sim, tenho convênio' },
-          { id: 'convenio_particular', label: '💰 Particular' },
+          { id: 'convenio_sim', label: 'Sim, tenho convênio' },
+          { id: 'convenio_particular', label: 'Particular' },
         ])],
         stateUpdate: {
           step: 'convenio',
@@ -152,8 +152,8 @@ export const identificacaoStep: StepHandler = async (session, input) => {
 
       return {
         responses: [buttons(MSG.cadastroSucesso, [
-          { id: 'convenio_sim', label: '💳 Sim, tenho convênio' },
-          { id: 'convenio_particular', label: '💰 Particular' },
+          { id: 'convenio_sim', label: 'Sim, tenho convênio' },
+          { id: 'convenio_particular', label: 'Particular' },
         ])],
         stateUpdate: {
           step: 'convenio',

@@ -2,14 +2,15 @@ import Fuse from 'fuse.js';
 import { StepHandler, SessionState } from '../../state/types';
 import { text, buttons, list, MSG } from '../messages';
 import { matchConvenio } from '../../base/convenio-matcher';
-import { buildEspecialidadeList } from './helpers';
+import { buildCategoriaList } from './helpers';
+
 
 const PLANOS_LISTA_MAX = 10;
 
 function confirmAndShowEsp(msg: string, stateUpdate: Partial<SessionState>) {
   return {
-    responses: [text(msg), buildEspecialidadeList()],
-    stateUpdate: { ...stateUpdate, step: 'especialidade' as const, subStep: 'aguardando_selecao' },
+    responses: [text(msg), buildCategoriaList()],
+    stateUpdate: { ...stateUpdate, step: 'especialidade' as const, subStep: 'aguardando_categoria' },
   };
 }
 
@@ -36,8 +37,8 @@ export const convenioStep: StepHandler = async (session, input) => {
     }
     return {
       responses: [buttons('Você possui convênio médico?', [
-        { id: 'convenio_sim', label: '💳 Sim, tenho convênio' },
-        { id: 'convenio_particular', label: '💰 Particular' },
+        { id: 'convenio_sim', label: 'Sim, tenho convênio' },
+        { id: 'convenio_particular', label: 'Particular' },
       ])],
       stateUpdate: {},
     };
@@ -55,8 +56,8 @@ export const convenioStep: StepHandler = async (session, input) => {
     if (!conv) {
       return {
         responses: [buttons(MSG.convenioNaoEncontrado(input), [
-          { id: 'convenio_particular', label: '💰 Sim, particular' },
-          { id: 'cadastrar_nao', label: '👤 Falar com atendente' },
+          { id: 'convenio_particular', label: 'Sim, particular' },
+          { id: 'cadastrar_nao', label: 'Falar com atendente' },
         ])],
         stateUpdate: {},
       };
@@ -132,8 +133,8 @@ export const convenioStep: StepHandler = async (session, input) => {
 
   return {
     responses: [buttons('Você possui convênio médico?', [
-      { id: 'convenio_sim', label: '💳 Sim, tenho convênio' },
-      { id: 'convenio_particular', label: '💰 Particular' },
+      { id: 'convenio_sim', label: 'Sim, tenho convênio' },
+      { id: 'convenio_particular', label: 'Particular' },
     ])],
     stateUpdate: { subStep: 'escolher_tipo' },
   };

@@ -28,9 +28,9 @@ export const confirmacaoStep: StepHandler = async (session, input) => {
     const dataFmt = formatData(horario.data, horario.hora);
     return {
       responses: [buttons(MSG.resumo(paciente.nome, especialidade.nome, dataFmt, convenio.nome), [
-        { id: 'confirmar', label: '✅ Confirmar' },
-        { id: 'alterar', label: '✏️ Alterar' },
-        { id: 'cancelar', label: '❌ Cancelar' },
+        { id: 'confirmar', label: 'Confirmar' },
+        { id: 'alterar', label: 'Alterar' },
+        { id: 'cancelar', label: 'Cancelar' },
       ])],
       stateUpdate: { subStep: 'aguardando_decisao' },
     };
@@ -77,9 +77,9 @@ export const confirmacaoStep: StepHandler = async (session, input) => {
     if (input === 'alterar') {
       return {
         responses: [buttons(MSG.alterarOQue, [
-          { id: 'alterar_horario', label: '📅 Horário' },
-          { id: 'alterar_especialidade', label: '🏥 Especialidade' },
-          { id: 'alterar_convenio', label: '💳 Convênio' },
+          { id: 'alterar_horario', label: 'Horário' },
+          { id: 'alterar_especialidade', label: 'Especialidade' },
+          { id: 'alterar_convenio', label: 'Convênio' },
         ])],
         stateUpdate: { subStep: 'escolher_alteracao' },
       };

@@ -65,8 +65,8 @@ export const horariosStep: StepHandler = async (session, input) => {
       if (!horarios.length) {
         return {
           responses: [buttons(MSG.horariosVazio(especialidade.nome), [
-            { id: 'esp_outra', label: '🔄 Outra especialidade' },
-            { id: 'horarios_atendente', label: '👤 Falar com atendente' },
+            { id: 'esp_outra', label: 'Outra especialidade' },
+            { id: 'horarios_atendente', label: 'Falar com atendente' },
           ])],
           stateUpdate: { subStep: 'sem_horarios' },
         };
@@ -82,8 +82,8 @@ export const horariosStep: StepHandler = async (session, input) => {
       }));
 
       const extraBtns: { id: string; label: string }[] = [];
-      if (hasMore) extraBtns.push({ id: 'horarios_mais', label: '📅 Ver mais horários' });
-      extraBtns.push({ id: 'horarios_atendente', label: '👤 Atendente' });
+      if (hasMore) extraBtns.push({ id: 'horarios_mais', label: 'Ver mais horários' });
+      extraBtns.push({ id: 'horarios_atendente', label: 'Atendente' });
 
       return {
         responses: [

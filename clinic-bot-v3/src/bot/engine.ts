@@ -56,8 +56,8 @@ function checkTimeout(session: SessionState): { session: SessionState; extraResp
       ? `uma consulta de *${session.especialidade.nome}*`
       : 'um agendamento';
     extra.push(buttons(MSG.retomada(contexto), [
-      { id: 'retomar_sim', label: '✅ Continuar' },
-      { id: 'retomar_nao', label: '🔄 Recomeçar' },
+      { id: 'retomar_sim', label: 'Continuar' },
+      { id: 'retomar_nao', label: 'Recomeçar' },
     ]));
   }
 
@@ -177,8 +177,7 @@ async function _processMessage(phone: string, input: string): Promise<BotRespons
   const shouldAutoExec = updated.step !== session.step
     && updated.step !== 'concluido'
     && updated.step !== 'escalado'
-    && updated.step !== 'horarios'
-    && (result.responses.length === 0 || updated.step === 'confirmacao');
+    && (result.responses.length === 0 || updated.step === 'confirmacao' || updated.step === 'horarios');
 
   if (shouldAutoExec) {
     const nextHandler = stepHandlers[updated.step];

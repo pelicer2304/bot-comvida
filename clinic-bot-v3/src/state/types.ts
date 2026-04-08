@@ -9,6 +9,7 @@ export interface SessionState {
   tentativas: Record<string, number>;
   subStep?: string;
   tempData?: Record<string, unknown>;
+  lastOptions?: { id: string; label: string }[];
   lastActivityAt: string;
   createdAt: string;
 }
